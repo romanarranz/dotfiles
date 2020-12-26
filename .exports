@@ -1,5 +1,7 @@
 #!/usr/bin/env zsh
 
+export SYSTEM=$(uname -s)
+
 # Colorful term
 export TERM="xterm-256color";
 
@@ -40,3 +42,6 @@ export BASH_SILENCE_DEPRECATION_WARNING=1;
 # NVM async completion load for faster tty load 
 export NVM_LAZY_LOAD=true;
 export NVM_COMPLETION=true;
+
+# Editor
+export EDITOR='code'

@@ -1,0 +1,10 @@
+#!/usr/bin/env zsh
+
+if [[ "x$SYSTEM" = "xDarwin"  ]]; then
+    # system executables
+    #export PATH=$PATH:/usr/bin:/bin:/usr/sbin:/sbin:/usr/libexec
+    # local system binaries
+    export PATH=/usr/local/sbin:/usr/local/bin:$PATH;
+    # home binaries `~/bin` if any
+    export PATH="$HOME/bin:$PATH";
+fi

@@ -146,6 +146,14 @@ if [ ! $(uname -s) = 'Darwin' ]; then
 	fi
 fi
 
+# Change file extensions recursively in current directory
+# ie: change-extension erb haml
+function change-extension() {
+  foreach f (**/*.$1)
+    mv $f $f:r.$2
+  end
+}
+
 # `o` with no arguments opens the current directory, otherwise opens the given
 # location
 function o() {

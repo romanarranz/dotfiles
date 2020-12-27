@@ -1,3 +1,7 @@
+setopt appendhistory extendedglob
+unsetopt beep
+bindkey -v
+
 # eliminates duplicates in *paths
 typeset -gU cdpath fpath path
 

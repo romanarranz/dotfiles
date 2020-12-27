@@ -5,8 +5,16 @@ zinit ice atinit'zmodload zsh/zprof' \
     atload'zprof | head -n 20; zmodload -u zsh/zprof'
 
 # zsh-nvm
-zinit ice wait"2" lucid
+zinit ice wait"1" lucid
 zinit light lukechilds/zsh-nvm
+
+# zsh-completions
+zplugin ice wait"0" lucid
+zplugin light zsh-users/zsh-completions
+
+# zsh-history-substring-search, must load it otherwise bindkeys won't work
+# zplugin ice wait"0" lucid
+zplugin light zsh-users/zsh-history-substring-search
 
 # zsh-autosuggestions
 zinit ice wait lucid atload"!_zsh_autosuggest_start"

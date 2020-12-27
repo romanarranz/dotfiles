@@ -9,8 +9,10 @@ export TERM="xterm-256color";
 export PYTHONIOENCODING='UTF-8';
 
 # Increase Bash history size. Allow 32³ entries; the default is 500.
-export HISTSIZE='32768';
+export HISTSIZE="32768";
+export HISTFILE="${HOME}/.histfile";
 export HISTFILESIZE="${HISTSIZE}";
+export SAVEHIST="10000";
 # Omit duplicates and commands that begin with a space from history.
 export HISTCONTROL='ignoreboth';
 
@@ -39,9 +41,13 @@ export GPG_TTY=$(tty);
 # Hide the “default interactive shell is now zsh” warning on macOS.
 export BASH_SILENCE_DEPRECATION_WARNING=1;
 
-# NVM async completion load for faster tty load 
+# NVM 
+# async completion load for faster tty load 
 export NVM_LAZY_LOAD=true;
 export NVM_COMPLETION=true;
+# nvm use should make a symlink
+export NVM_SYMLINK_CURRENT=true;
+export NVM_DIR="$HOME/.nvm";
 
 # Editor
-export EDITOR='code'
+export EDITOR='code';

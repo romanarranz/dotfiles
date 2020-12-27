@@ -20,7 +20,10 @@ alias -- -='cd -'
 alias dl='cd ~/Downloads'
 alias dt='cd ~/Desktop'
 alias p='cd ~/p'
-alias g='git'
+
+# Docker
+alias d='docker $*'
+alias d-c='docker-compose $*'
 
 # Always enable colored `grep` output
 # Note: `GREP_OPTIONS='--color=auto'` is deprecated, hence the alias usage.
@@ -50,6 +53,7 @@ alias canary='/Applications/Google\ Chrome\ Canary.app/Contents/MacOS/Google\ Ch
 
 # VSCode
 alias code="/Applications/Visual\ Studio\ Code.app/Contents/MacOS/Electron"
+alias e='exec "${EDITOR}" \"${1:-.}\"'
 
 # IP addresses
 alias ip='dig +short myip.opendns.com @resolver1.opendns.com'

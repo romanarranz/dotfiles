@@ -9,6 +9,11 @@ function zsh_bootstrap(){
         mkdir $ZINIT && git clone https://github.com/zdharma/zinit.git $ZINIT/bin
     fi
 
+    if [[ "x$SYSTEM" = "xDarwin"  ]]; then
+        echo "Loading MAC Os config"
+        sh ${ZSHCONFIG}/config/.macos
+    fi
+
     echo "Link resource files to ${HOME}"
     ln -sf ${ZSHCONFIG}/zlogin ${HOME}/.zlogin
     ln -sf ${ZSHCONFIG}/zprofile ${HOME}/.zprofile

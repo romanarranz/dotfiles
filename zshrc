@@ -8,7 +8,7 @@ export ZSHCONFIG="${HOME}/.zsh-config"
 source ~/.zinit/bin/zinit.zsh
 
 # Load the shell dotfiles, and then some:
-for file in ${ZSHCONFIG}/.{path,exports,aliases,functions,extra}; do [ -r "$file" ] && [ -f "$file" ] && source "$file"; done
+for file in ${ZSHCONFIG}/.{path,exports,aliases,bindings,functions,extra}; do [ -r "$file" ] && [ -f "$file" ] && source "$file"; done
 unset file;
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.

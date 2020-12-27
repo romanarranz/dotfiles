@@ -1,6 +1,8 @@
-# dotfiles
+# Roman's dotfiles
 
 The configurations are for my macOS workstation and therefore contain some macOS-specific code and commands.
+
+![](./assets/prompt.png)
 
 ## Quick Start
 

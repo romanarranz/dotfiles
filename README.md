@@ -16,3 +16,10 @@ $ git clone https://github.com/romanarranz/dotfiles.git .zsh-config
 # then link the startup files
 $ zsh ~/.zsh-config/bootstrap.zsh
 ```
+
+## Credits
+
+- https://github.com/mathiasbynens/dotfiles
+- https://github.com/htr3n/zsh-config
+- https://github.com/broucz/dotfiles
+- https://github.com/thoughtbot/dotfiles

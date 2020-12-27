@@ -49,5 +49,8 @@ zinit light trapd00r/LS_COLORS
 zinit ice wait"2" lucid from"gh-r" as"program" mv"exa* -> exa"
 zinit light ogham/exa
 
+# nnn, a file browser
+# zinit pick"misc/quitcd/quitcd.bash_zsh" sbin"nnn" make light-mode for jarun/nnn
+
 # theme: powerlevel10k
 zinit light romkatv/powerlevel10k

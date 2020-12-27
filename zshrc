@@ -8,8 +8,13 @@ export ZSHCONFIG="${HOME}/.zsh-config"
 source ~/.zinit/bin/zinit.zsh
 
 # Load the shell dotfiles, and then some:
-for file in ${ZSHCONFIG}/.{path,prompt,exports,aliases,functions,extra}; do [ -r "$file" ] && [ -f "$file" ] && source "$file"; done
+for file in ${ZSHCONFIG}/.{path,exports,aliases,functions,extra}; do [ -r "$file" ] && [ -f "$file" ] && source "$file"; done
 unset file;
+
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
 
 SHOPT=`which shopt`
 if [ -z SHOPT ]; then
@@ -52,3 +57,9 @@ fi
 
 # RUST
 export PATH="$HOME/.cargo/bin:$PATH"
+
+# To reconfigure p10k run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# Customize prompt
+source ${ZSHCONFIG}/.prompt

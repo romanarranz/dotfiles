@@ -1,0 +1,44 @@
+#!/usr/bin/env zsh
+
+# Reload the shell (i.e. invoke as a login shell)
+alias reload='exec ${SHELL} -l'
+alias l='exa -la'
+alias ll='exa -la'
+
+# Print each PATH entry on a separate line
+alias path='echo -e ${PATH//:/\\n}'
+
+# Easier navigation: .., ..., ...., ....., ~ and -
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+alias ~='cd ~' # `cd` is probably faster to type though
+alias -- -='cd -'
+
+# Shortcuts
+alias dl='cd ~/Downloads'
+alias dt='cd ~/Desktop'
+alias p='cd ~/p'
+
+# Docker
+alias d='docker $*'
+alias d-c='docker-compose $*'
+
+# Always enable colored `grep` output
+# Note: `GREP_OPTIONS='--color=auto'` is deprecated, hence the alias usage.
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+
+# Enable aliases to be sudo’ed
+alias sudo='sudo '
+
+# Get week number
+alias week='date +%V'
+
+# Windows style console clear
+alias cls='clear'
+
+# editor shortcut
+alias e='exec "${EDITOR}" \"${1:-.}\"'

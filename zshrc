@@ -61,6 +61,11 @@ if [ -z $PYENV_ROOT ]; then
     fi
 fi
 
+# POETRY
+if [ -d $HOME/.poetry ]; then
+  export PATH="$HOME/.poetry/bin:$PATH"
+fi
+
 # RUST
 export PATH="$HOME/.cargo/bin:$PATH"
 

@@ -66,6 +66,9 @@ if [ -d $HOME/.poetry ]; then
   export PATH="$HOME/.poetry/bin:$PATH"
 fi
 
+# ARKADE
+export PATH=$PATH:$HOME/.arkade/bin/
+
 # RUST
 export PATH="$HOME/.cargo/bin:$PATH"
 

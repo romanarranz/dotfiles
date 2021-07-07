@@ -42,3 +42,7 @@ alias cls='clear'
 
 # editor shortcut
 alias e='exec "${EDITOR}" \"${1:-.}\"'
+
+# cleanup
+alias delvenvs='find . -name ".venv" -type d -prune -exec rm -rf "{}" +'
+alias delnodemodules='find . -name "node_modules" -type d -prune -exec rm -rf "{}" +'

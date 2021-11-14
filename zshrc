@@ -56,7 +56,7 @@ if [ -z $PYENV_ROOT ]; then
     export PYENV_ROOT="$HOME/.pyenv"
     export PATH="$PYENV_ROOT/bin:$PATH"
 fi
-eval "$(pyenv init -)"
+eval "$(pyenv init --path)"
 
 # POETRY
 if [ -d $HOME/.poetry ]; then

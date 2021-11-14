@@ -10,6 +10,3 @@ path=(
   /usr/local/{bin,sbin}
   $path
 )
-
-# pyenv
-eval "$(pyenv init --path)"

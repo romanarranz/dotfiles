@@ -6,7 +6,7 @@ function zsh_bootstrap(){
     local ZINIT="${HOME}/.zinit"
     if [ ! -d "${ZINIT}" ] ; then
         echo "Cloning zinit"
-        mkdir $ZINIT && git clone https://github.com/zdharma/zinit.git $ZINIT/bin
+        mkdir $ZINIT && git clone https://github.com/zdharma-continuum/zinit.git $ZINIT/bin
     fi
 
     if [[ "x$SYSTEM" = "xDarwin"  ]]; then

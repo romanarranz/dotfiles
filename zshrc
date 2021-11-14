@@ -55,11 +55,8 @@ esac
 if [ -z $PYENV_ROOT ]; then
     export PYENV_ROOT="$HOME/.pyenv"
     export PATH="$PYENV_ROOT/bin:$PATH"
-
-    if command -v pyenv 1>/dev/null 2>&1; then
-      _evalcache pyenv init -
-    fi
 fi
+eval "$(pyenv init -)"
 
 # POETRY
 if [ -d $HOME/.poetry ]; then

@@ -32,7 +32,7 @@ zinit wait lucid for \
 # fast-syntax-hightlighting + colored-man-pages + docker completion
 zinit wait lucid for \
   atinit"zicompinit; zicdreplay"  \
-        zdharma/fast-syntax-highlighting \
+        zdharma-continuum/fast-syntax-highlighting \
       OMZP::colored-man-pages \
   as"completion" \
         OMZP::docker/_docker

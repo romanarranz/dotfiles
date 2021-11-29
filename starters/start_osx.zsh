@@ -44,6 +44,7 @@ if [ "$XCODE" != "/Library/Developer/CommandLineTools" ]; then
 fi
 
 # Brew packages
+TAPS=()
 LIBS=()
 BREW_PKGS=$(brew list)
 FD=$(echo $BREW_PKGS|grep fd)
@@ -52,6 +53,11 @@ FFMPEG=$(echo $BREW_PKGS|grep ffmpeg)
 if [ "x$FFMPEG" = "x" ]; then LIBS+=("ffmpeg") fi
 JQ=$(echo $BREW_PKGS|grep jq)
 if [ "x$JQ" = "x" ]; then LIBS+=("jq") fi
+HEROKU=$(echo $BREW_PKGS|grep heroku)
+if [ "x$HEROKU" = "x" ]; then 
+    TAPS+=("heroku/brew") 
+    LIBS+=("heroku")
+fi
 OPENSSL=$(echo $BREW_PKGS|grep openssl)
 if [ "x$OPENSSL" = "x" ]; then LIBS+=("openssl") fi
 PANDOC=$(echo $BREW_PKGS|grep pandoc)
@@ -74,6 +80,10 @@ XZ=$(echo $BREW_PKGS|grep xz)
 if [ "x$XZ" = "x" ]; then LIBS+=("xz") fi
 ZLIB=$(echo $BREW_PKGS|grep zlib)
 if [ "x$ZLIB" = "x" ]; then LIBS+=("zlib") fi
+
+if [ ${#TAPS[@]} -gt 0 ]; then
+    brew tap $TAPS
+fi
 
 if [ ${#LIBS[@]} -gt 0 ]; then
     brew install $LIBS

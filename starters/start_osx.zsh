@@ -53,6 +53,8 @@ FFMPEG=$(echo $BREW_PKGS|grep ffmpeg)
 if [ "x$FFMPEG" = "x" ]; then LIBS+=("ffmpeg") fi
 JQ=$(echo $BREW_PKGS|grep jq)
 if [ "x$JQ" = "x" ]; then LIBS+=("jq") fi
+HELM=$(echo $BREW_PKGS|grep helm)
+if [ "x$HELM" = "x" ]; then LIBS+=("helm") fi
 HEROKU=$(echo $BREW_PKGS|grep heroku)
 if [ "x$HEROKU" = "x" ]; then 
     TAPS+=("heroku/brew") 

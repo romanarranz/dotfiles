@@ -76,6 +76,8 @@ TESSERACT=$(echo $BREW_PKGS|grep tesseract)
 if [ "x$TESSERACT" = "x" ]; then LIBS+=("tesseract") fi
 TREE=$(echo $BREW_PKGS|grep tree)
 if [ "x$TREE" = "x" ]; then LIBS+=("tree") fi
+VIPS=$(echo $BREW_PKGS|grep vips)
+if [ "x$VIPS" = "x" ]; then LIBS+=("vips") fi
 WGET=$(echo $BREW_PKGS|grep wget)
 if [ "x$WGET" = "x" ]; then LIBS+=("wget") fi
 XZ=$(echo $BREW_PKGS|grep xz)

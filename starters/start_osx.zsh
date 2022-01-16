@@ -47,6 +47,8 @@ fi
 TAPS=()
 LIBS=()
 BREW_PKGS=$(brew list)
+AWSCURL=$(echo $BREW_PKGS|grep awscurl)
+if [ "x$AWSCURL" = "x" ]; then LIBS+=("awscurl") fi
 FD=$(echo $BREW_PKGS|grep fd)
 if [ "x$FD" = "x" ]; then LIBS+=("fd") fi
 FFMPEG=$(echo $BREW_PKGS|grep ffmpeg)

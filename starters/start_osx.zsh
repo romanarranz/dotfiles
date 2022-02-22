@@ -66,6 +66,8 @@ OPENSSL=$(echo $BREW_PKGS|grep openssl)
 if [ "x$OPENSSL" = "x" ]; then LIBS+=("openssl") fi
 PANDOC=$(echo $BREW_PKGS|grep pandoc)
 if [ "x$PANDOC" = "x" ]; then LIBS+=("pandoc") fi
+CMAKE=$(echo $BREW_PKGS|grep cmake)
+if [ "x$CMAKE" = "x" ]; then LIBS+=("cmake") fi
 POPPLER=$(echo $BREW_PKGS|grep poppler)
 if [ "x$POPPLER" = "x" ]; then LIBS+=("poppler") fi
 READLINE=$(echo $BREW_PKGS|grep readline)

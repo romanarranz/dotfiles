@@ -46,6 +46,7 @@ fi
 # Brew packages
 TAPS=()
 LIBS=()
+CASKS=()
 BREW_PKGS=$(brew list)
 AWSCURL=$(echo $BREW_PKGS|grep awscurl)
 if [ "x$AWSCURL" = "x" ]; then LIBS+=("awscurl") fi
@@ -88,6 +89,10 @@ XZ=$(echo $BREW_PKGS|grep xz)
 if [ "x$XZ" = "x" ]; then LIBS+=("xz") fi
 ZLIB=$(echo $BREW_PKGS|grep zlib)
 if [ "x$ZLIB" = "x" ]; then LIBS+=("zlib") fi
+RECTANGLE=$(echo $BREW_PKGS|grep rectangle)
+if [ "x$RECTANGLE" = "x" ]; then CASKS+=("rectangle") fi
+KEYCASTR=$(echo $BREW_PKGS|grep keycastr)
+if [ "x$KEYCASTR" = "x" ]; then CASKS+=("keycastr") fi
 
 if [ ${#TAPS[@]} -gt 0 ]; then
     brew tap $TAPS
@@ -95,6 +100,11 @@ fi
 
 if [ ${#LIBS[@]} -gt 0 ]; then
     brew install $LIBS
+    brew cleanup
+fi
+
+if [ ${#CASKS[@]} -gt 0 ]; then
+    brew install --cask $CASKS
     brew cleanup
 fi
 

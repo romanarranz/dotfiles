@@ -2,8 +2,8 @@
 
 ARCH=$(uname -p)
 APPLE_CHIP="intel"
-if [ "x$SYSTEM" = "xDarwin" ] && [ "$ARCH" = "arm" ]; then 
-    APPLE_CHIP="silicon" 
+if [ "x$SYSTEM" = "xDarwin" ] && [ "$ARCH" = "arm" ]; then
+    APPLE_CHIP="silicon"
 fi
 
 # Brew System Package manager
@@ -59,12 +59,14 @@ if [ "x$JQ" = "x" ]; then LIBS+=("jq") fi
 HELM=$(echo $BREW_PKGS|grep helm)
 if [ "x$HELM" = "x" ]; then LIBS+=("helm") fi
 HEROKU=$(echo $BREW_PKGS|grep heroku)
-if [ "x$HEROKU" = "x" ]; then 
-    TAPS+=("heroku/brew") 
+if [ "x$HEROKU" = "x" ]; then
+    TAPS+=("heroku/brew")
     LIBS+=("heroku")
 fi
 OPENSSL=$(echo $BREW_PKGS|grep openssl)
 if [ "x$OPENSSL" = "x" ]; then LIBS+=("openssl") fi
+NCDU=$(echo $BREW_PKGS|grep ncdu)
+if [ "x$NCDU" = "x" ]; then LIBS+=("ncdu") fi
 PANDOC=$(echo $BREW_PKGS|grep pandoc)
 if [ "x$PANDOC" = "x" ]; then LIBS+=("pandoc") fi
 CMAKE=$(echo $BREW_PKGS|grep cmake)

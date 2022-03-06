@@ -15,6 +15,9 @@ $ git clone https://github.com/romanarranz/dotfiles.git .zsh-config
 
 # then link the startup files
 $ zsh ~/.zsh-config/bootstrap.zsh
+
+# add gitconfig options
+cat config/.gitconfig >> ~/.gitconfig
 ```
 
 ## Credits

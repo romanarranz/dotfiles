@@ -72,5 +72,8 @@ export PATH="$HOME/.cargo/bin:$PATH"
 # To reconfigure p10k run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+# Zoxide
+eval "$(zoxide init zsh)"
+
 # Customize prompt
 source ${ZSHCONFIG}/.prompt

@@ -95,6 +95,25 @@ RECTANGLE=$(echo $BREW_PKGS|grep rectangle)
 if [ "x$RECTANGLE" = "x" ]; then CASKS+=("rectangle") fi
 KEYCASTR=$(echo $BREW_PKGS|grep keycastr)
 if [ "x$KEYCASTR" = "x" ]; then CASKS+=("keycastr") fi
+# https://github.com/ibraheemdev/modern-unix
+DUST=$(echo $BREW_PKGS|grep dust)
+if [ "x$DUST" = "x" ]; then LIBS+=("dust") fi
+DOG=$(echo $BREW_PKGS|grep dog)
+if [ "x$DOG" = "x" ]; then LIBS+=("dog") fi
+GPING=$(echo $BREW_PKGS|grep gping)
+if [ "x$GPING" = "x" ]; then LIBS+=("gping") fi
+PROCS=$(echo $BREW_PKGS|grep procs)
+if [ "x$PROCS" = "x" ]; then LIBS+=("procs") fi
+DUF=$(echo $BREW_PKGS|grep duf)
+if [ "x$DUF" = "x" ]; then LIBS+=("duf") fi
+BAT=$(echo $BREW_PKGS|grep bat)
+if [ "x$BAT" = "x" ]; then LIBS+=("bat") fi
+# https://github.com/dandavison/delta
+GIT_DELTA=$(echo $BREW_PKGS|grep git-delta)
+if [ "x$GIT_DELTA" = "x" ]; then LIBS+=("git-delta") fi
+# https://github.com/ajeetdsouza/zoxide
+ZOXIDE=$(echo $BREW_PKGS|grep zoxide)
+if [ "x$ZOXIDE" = "x" ]; then LIBS+=("zoxide") fi
 
 if [ ${#TAPS[@]} -gt 0 ]; then
     brew tap $TAPS
@@ -128,6 +147,11 @@ if [ "x$NODE16" = "x" ]; then
     nvm install 16
     nvm use 16
 fi
+TLDR=$(which tldr)
+if [ "x$TLDR" = "x" ]; then
+    # https://github.com/tldr-pages/tldr
+    npm i -g tldr
+fi 
 
 # Python
 #

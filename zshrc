@@ -15,6 +15,12 @@ unset file;
 source ${ZSHCONFIG}/aliases/.common
 if [[ "x$SYSTEM" = "xDarwin"  ]]; then
   source ${ZSHCONFIG}/aliases/.macos
+  
+  ARCH=$(uname -m)
+  if [ "$ARCH" = "arm64" ]; then
+    # Homebrew installation patch https://github.com/Homebrew/discussions/discussions/446
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+  fi
 fi
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.

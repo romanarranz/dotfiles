@@ -60,6 +60,12 @@ case $SYSTEM in
   ;;
 esac
 
+# NVM
+if [ -d $HOME/.nvm ]; then
+  export NVM_DIR="$HOME/.nvm"
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+fi
+
 # PYENV
 if [ -z $PYENV_ROOT ]; then
     export PYENV_ROOT="$HOME/.pyenv"

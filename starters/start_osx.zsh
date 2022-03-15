@@ -28,11 +28,12 @@ if [ "$APPLE_CHIP" = "silicon" ]; then
 
     IBREW_ALIAS=$(grep ibrew $ZSHCONFIG/aliases/.macos)
     if [ "x$IBREW_ALIAS" = "x" ]; then
-        echo "# Rosetta Intel based brew" >> $ZSHCONFIG/aliases/.macos
+        echo "# Rosetta Intel based brew" >> $ZSHCONFIG/aliases/.macos
         echo "alias ibrew='arch -x86_64 /usr/local/homebrew/bin/brew'" >> $ZSHCONFIG/aliases/.macos
     fi
 fi
 
+source $HOME/.zprofile
 source $HOME/.zshrc
 
 # Build deps
@@ -151,7 +152,7 @@ TLDR=$(which tldr)
 if [ "x$TLDR" = "x" ]; then
     # https://github.com/tldr-pages/tldr
     npm i -g tldr
-fi 
+fi
 
 # Python
 #

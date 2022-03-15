@@ -4,6 +4,19 @@
 # Linux
 #
 
+# Pipe public key to clipboard.
+alias pubkey="more ~/.ssh/id_rsa.pub | xclip | echo '=> Public key copied to pasteboard.'"
+
 # IP addresses
 alias publicip='dig +short myip.opendns.com @resolver1.opendns.com'
 alias localip="hostname -I|awk '{print $1}'"
+
+# Get manually installed apt packages
+alias aptlist="comm -23 <(apt-mark showmanual | sort -u) <(gzip -dc /var/log/installer/initial-status.gz | sed -n 's/^Package: //p' | sort -u)"
+
+# Show/hide hidden files in Nautilus
+alias hide='gsettings set org.gtk.Settings.FileChooser show-hidden false'
+alias show='gsettings set org.gtk.Settings.FileChooser show-hidden true'
+
+# Lock the screen (when going AFK)
+alias afk='gnome-screensaver-command -l'

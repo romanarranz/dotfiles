@@ -23,10 +23,12 @@ sudo apt update -y \
 && sudo apt install -y \
     build-essential \
     cmake \
+    gnome-screensaver \
     ncdu \
     vlc \
     wget \
-    whois
+    whois \
+    xclip
 
 # Brew packages
 #

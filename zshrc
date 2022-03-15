@@ -15,12 +15,15 @@ unset file;
 source ${ZSHCONFIG}/aliases/.common
 if [[ "x$SYSTEM" = "xDarwin"  ]]; then
   source ${ZSHCONFIG}/aliases/.macos
-  
+
   ARCH=$(uname -m)
   if [ "$ARCH" = "arm64" ]; then
     # Homebrew installation patch https://github.com/Homebrew/discussions/discussions/446
     eval "$(/opt/homebrew/bin/brew shellenv)"
   fi
+fi
+if [[ "x$SYSTEM" = "xLinux" ]]; then
+  source ${ZSHCONFIG}/aliases/.linux
 fi
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
@@ -74,6 +77,11 @@ export PATH=$PATH:$HOME/.arkade/bin/
 
 # RUST
 export PATH="$HOME/.cargo/bin:$PATH"
+
+# AWS
+if [[ "x$SYSTEM" = "xLinux" ]]; then
+  export PATH="$HOME/.local/bin:$PATH"
+fi
 
 # To reconfigure p10k run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

@@ -13,6 +13,10 @@ function zsh_bootstrap(){
         echo "Loading MAC Os config"
         sh ${ZSHCONFIG}/config/.macos
     fi
+    if [[ "x$SYSTEM" = "xLinux"  ]]; then
+        echo "Loading Linux config"
+        sh ${ZSHCONFIG}/config/.linux
+    fi
 
     echo "Link resource files to ${HOME}"
     ln -sf ${ZSHCONFIG}/zlogin ${HOME}/.zlogin

@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+# Check if running on Linux, otherwise stop here
+[[ ! "x$SYSTEM" == "xLinux" ]] && return

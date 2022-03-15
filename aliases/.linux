@@ -1,0 +1,9 @@
+#!/usr/bin/env zsh
+
+#
+# Linux
+#
+
+# IP addresses
+alias publicip='dig +short myip.opendns.com @resolver1.opendns.com'
+alias localip="hostname -I|awk '{print $1}'"

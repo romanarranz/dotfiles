@@ -10,7 +10,6 @@ BREW=$(which brew)
 if [[ "$BREW" =~ "not found" ]]; then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     echo "# Brew env vars" >> $HOME/.zprofile
-    echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> $HOME/.zprofile
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
@@ -129,6 +128,21 @@ fi
 RUSTUP=$(which rustup)
 if [[ "$RUSTUP" =~ "not found" ]]; then
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs|sh
+fi
+
+# Java
+#
+# sdkman
+SDKMAN_DIR=$HOME/.sdkman
+if [ ! -d $SDKMAN_DIR ]; then
+    curl -s "https://get.sdkman.io" | bash
+    source "$HOME/.sdkman/bin/sdkman-init.sh"
+fi
+
+JAVA_VERSIONS=$(sdk ls java|grep installed)
+JAVA17=$(echo $JAVA_VERSIONS|grep 17)
+if [[ "x$JAVA17" = "x" ]]; then
+    sdk install java 17.0.2-tem
 fi
 
 # Kubernetes

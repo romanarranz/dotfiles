@@ -90,6 +90,11 @@ export PATH=$PATH:$HOME/.arkade/bin/
 # RUST
 export PATH="$HOME/.cargo/bin:$PATH"
 
+# JAVA
+if [ -d $HOME/.sdkman ]; then
+    source "$HOME/.sdkman/bin/sdkman-init.sh"
+fi
+
 # AWS
 if [[ "x$SYSTEM" = "xLinux" ]]; then
   export PATH="$HOME/.local/bin:$PATH"

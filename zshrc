@@ -71,7 +71,13 @@ if [ -z $PYENV_ROOT ]; then
     export PYENV_ROOT="$HOME/.pyenv"
     export PATH="$PYENV_ROOT/bin:$PATH"
 fi
-eval "$(pyenv init --path)"
+
+PYENV_VER=$(pyenv -v)
+if [[ $PYENV_VER =~ "pyenv 1." ]]; then
+  eval "$(pyenv init -)"
+else
+  eval "$(pyenv init --path)"
+fi
 
 # POETRY
 if [ -d $HOME/.poetry ]; then

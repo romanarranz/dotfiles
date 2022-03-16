@@ -10,3 +10,5 @@ path=(
   /usr/local/{bin,sbin}
   $path
 )
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"

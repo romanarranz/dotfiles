@@ -20,3 +20,6 @@ alias show='gsettings set org.gtk.Settings.FileChooser show-hidden true'
 
 # Lock the screen (when going AFK)
 alias afk='gnome-screensaver-command -l'
+
+# Pick color
+alias colorp='pick-colour-picker'

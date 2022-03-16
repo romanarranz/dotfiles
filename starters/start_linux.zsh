@@ -24,6 +24,7 @@ sudo apt update -y \
     cmake \
     gnome-screensaver \
     ncdu \
+    snapd \
     vlc \
     wget \
     whois \
@@ -70,6 +71,13 @@ fi
 if [ ${#CASKS[@]} -gt 0 ]; then
     brew install --cask $CASKS
     brew cleanup
+fi
+
+# Snap packages
+#
+PICK=$(which pick-colour-picker)
+if [[ "$PICK" =~ "not found" ]]; then
+    sudo snap install pick-colour-picker
 fi
 
 # Node

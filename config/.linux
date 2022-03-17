@@ -2,3 +2,9 @@
 
 # Check if running on Linux, otherwise stop here
 [[ ! "x$SYSTEM" == "xLinux" ]] && return
+
+# Set a really fast key repeat.
+# in hertz
+gsettings set org.gnome.desktop.peripherals.keyboard repeat-interval 15
+# in ms
+gsettings set org.gnome.desktop.peripherals.keyboard delay 250

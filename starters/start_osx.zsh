@@ -115,6 +115,8 @@ if [ "x$GIT_DELTA" = "x" ]; then LIBS+=("git-delta") fi
 # https://github.com/ajeetdsouza/zoxide
 ZOXIDE=$(echo $BREW_PKGS|grep zoxide)
 if [ "x$ZOXIDE" = "x" ]; then LIBS+=("zoxide") fi
+GRAPHVIZ=$(echo $BREW_PKGS|grep graphviz)
+if [ "x$GRAPHVIZ" = "x" ]; then LIBS+=("graphviz") fi
 
 if [ ${#TAPS[@]} -gt 0 ]; then
     brew tap $TAPS
@@ -152,6 +154,11 @@ TLDR=$(which tldr)
 if [ "x$TLDR" = "x" ]; then
     # https://github.com/tldr-pages/tldr
     npm i -g tldr
+fi
+CDK_DIA=$(which cdk-dia)
+if [[ "x$CDK_DIA" = "x" ]]; then
+    # https://github.com/pistazie/cdk-dia
+    npm i -g cdk-dia
 fi
 
 # Python

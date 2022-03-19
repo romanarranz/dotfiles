@@ -23,6 +23,7 @@ sudo apt update -y \
     build-essential \
     cmake \
     gnome-screensaver \
+    graphviz \
     ncdu \
     snapd \
     vlc \
@@ -102,6 +103,11 @@ TLDR=$(which tldr)
 if [[ "$TLDR" =~ "not found" ]]; then
     # https://github.com/tldr-pages/tldr
     npm i -g tldr
+fi
+CDK_DIA=$(which cdk-dia)
+if [[ "$CDK_DIA" =~ "not found" ]]; then
+    # https://github.com/pistazie/cdk-dia
+    npm i -g cdk-dia
 fi
 
 # Python

@@ -155,6 +155,10 @@ if [ "x$TLDR" = "x" ]; then
     # https://github.com/tldr-pages/tldr
     npm i -g tldr
 fi
+NCU=$(which ncu)
+if [ "x$NCU" = "x" ]; then
+    npm i -g npm-check-updates
+fi
 CDK_DIA=$(which cdk-dia)
 if [[ "x$CDK_DIA" = "x" ]]; then
     # https://github.com/pistazie/cdk-dia

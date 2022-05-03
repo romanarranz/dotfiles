@@ -128,6 +128,16 @@ if [ ! -d "$PYENV_PLUGINS_DIR" ]; then
     git clone https://github.com/pyenv/pyenv-update.git $(pyenv root)/plugins/pyenv-update
 fi
 
+# python versions
+PYTHON27=$(pyenv versions|grep 2.7)
+if [ "x$PYTHON27" = "x" ]; then
+    pyenv install 2.7.18
+fi
+PYTHON39=$(pyenv versions|grep 3.9)
+if [ "x$PYTHON39" = "x" ]; then
+    pyenv install 3.9.4
+fi
+
 # Poetry
 #
 POETRY=$(which poetry)

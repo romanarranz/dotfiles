@@ -184,6 +184,10 @@ if [ ! -d "$PYENV_PLUGINS_DIR" ]; then
 fi
 
 # python versions
+PYTHON27=$(pyenv versions|grep 2.7)
+if [ "x$PYTHON27" = "x" ]; then
+    pyenv install 2.7.18
+fi
 PYTHON37=$(pyenv versions|grep 3.7)
 if [ "x$PYTHON37" = "x" ]; then
     pyenv install 3.7.10

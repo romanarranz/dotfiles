@@ -46,3 +46,6 @@ alias e='exec "${EDITOR}" \"${1:-.}\"'
 # cleanup
 alias delvenvs='find . -name ".venv" -type d -prune -exec rm -rf "{}" +'
 alias delnodemodules='find . -name "node_modules" -type d -prune -exec rm -rf "{}" +'
+
+# python versions
+alias python2='~/.pyenv/versions/2.7.18/bin/python2'

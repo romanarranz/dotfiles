@@ -20,6 +20,14 @@ $ zsh ~/.zsh-config/bootstrap.zsh
 cat config/.gitconfig >> ~/.gitconfig
 ```
 
+## Programming languages setup
+
+Python dual setup for version 2 and 3
+
+```
+pyenv global 3.9.4 2.7.18
+```
+
 ## Credits
 
 - https://github.com/mathiasbynens/dotfiles

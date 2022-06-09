@@ -210,3 +210,14 @@ if [[ "$AWS" =~ "not found" ]]; then
     unzip awscliv2.zip
     ./aws/install -i /usr/local/aws-cli -b /usr/local/bin
 fi
+
+# Profilers
+#
+CGMEMTIME=$(which cgmemtime)
+if [[ "$CGMEMTIME" =~ "not found" ]]; then
+    git clone https://github.com/gsauthof/cgmemtime
+    cd cgmemtime
+    make
+    sudo ./cgmemtime --setup -g $GID --perm 775
+    sudo mv cgmemtime /usr/local/bin
+fi

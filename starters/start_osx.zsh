@@ -277,3 +277,14 @@ AWS=$(which aws)
 if [ "x$AWS" = "x" ]; then
     pip3 install awscli
 fi
+
+# Profilers
+#
+CGMEMTIME=$(which cgmemtime)
+if [ "x$CGMEMTIME" = "x" ]; then
+    git clone https://github.com/gsauthof/cgmemtime
+    cd cgmemtime
+    make
+    sudo ./cgmemtime --setup -g $GID --perm 775
+    sudo mv cgmemtime /usr/local/bin
+fi

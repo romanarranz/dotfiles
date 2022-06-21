@@ -11,4 +11,6 @@ path=(
   $path
 )
 
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+if [[ "x$SYSTEM" = "xLinux" ]]; then
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi

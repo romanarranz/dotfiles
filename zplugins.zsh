@@ -4,6 +4,10 @@ setopt promptsubst
 zinit ice atinit'zmodload zsh/zprof' \
     atload'zprof | head -n 20; zmodload -u zsh/zprof'
 
+# # sudo.zsh -- press twice "esc" key to prefix your command with `sudo`
+# zinit ice wait
+# zinit snippet https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/sudo/sudo.plugin.zsh
+
 # zsh-nvm
 zinit ice wait"1" lucid
 zinit light lukechilds/zsh-nvm

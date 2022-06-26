@@ -4,6 +4,10 @@
 alias reload='exec ${SHELL} -l'
 alias l='exa -la'
 alias ll='exa -la'
+alias lt='exa --tree -L 2'
+alias cat='bat'
+alias df='duf'
+alias egrep='rg'
 
 # Print each PATH entry on a separate line
 alias path='echo -e ${PATH//:/\\n}'
@@ -29,7 +33,7 @@ alias d-c='docker-compose $*'
 # Note: `GREP_OPTIONS='--color=auto'` is deprecated, hence the alias usage.
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
-alias egrep='egrep --color=auto'
+# alias egrep='egrep --color=auto'
 
 # Enable aliases to be sudo’ed
 alias sudo='sudo '

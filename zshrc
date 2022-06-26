@@ -4,6 +4,16 @@
 
 export ZSHCONFIG="${HOME}/.zsh-config"
 
+if [[ "x$SYSTEM" = "xLinux" ]]; then
+  # Fix rare Java Problem
+  export _JAVA_AWT_WM_NONREPARENTING=1
+fi
+
+# Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
+HISTSIZE=1000
+SAVEHIST=1000
+HISTFILE=~/.zsh_history
+
 # Initialize zinit
 source ~/.zinit/bin/zinit.zsh
 
@@ -45,6 +55,7 @@ set ignoreeof on           # Typing EOF (CTRL+D) will not exit interactive sessi
 # Load plugins
 source "${ZSHCONFIG}/zplugins.zsh"
 
+# Use modern completion system
 # https://gist.github.com/ctechols/ca1035271ad134841284
 autoload -Uz compinit
 case $SYSTEM in
@@ -127,6 +138,9 @@ fi
 
 # Zoxide
 eval "$(zoxide init zsh)"
+
+# fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Customize prompt
 source ${ZSHCONFIG}/.prompt

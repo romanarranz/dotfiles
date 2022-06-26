@@ -1,10 +1,24 @@
 #!/usr/bin/env zsh
 
-# Key bindings for iTerm2 to scape words https://coderwall.com/p/a8uxma/zsh-iterm2-osx-shortcuts
-bindkey "[D" backward-word
-bindkey "[C" forward-word
-bindkey "^[a" beginning-of-line
-bindkey "^[e" end-of-line
+if [[ "x$SYSTEM" = "xDarwin" ]]; then
+    # Key bindings for iTerm2 to scape words https://coderwall.com/p/a8uxma/zsh-iterm2-osx-shortcuts
+    bindkey "[D" backward-word
+    bindkey "[C" forward-word
+    bindkey "^[a" beginning-of-line
+    bindkey "^[e" end-of-line
+
+    bindkey '^[[2~' overwrite-mode
+    bindkey '^[[3~' delete-char
+    bindkey '^[[H' beginning-of-line
+    bindkey '^[[1~' beginning-of-line
+    bindkey '^[[F' end-of-line
+    bindkey '^[[4~' end-of-line
+    bindkey '^[[1;5C' forward-word
+    bindkey '^[[1;5D' backward-word
+    bindkey '^[[3;5~' kill-word
+    bindkey '^[[5~' beginning-of-buffer-or-history
+    bindkey '^[[6~' end-of-buffer-or-history
+fi
 
 # history navigation
 # ctrl-p
@@ -61,3 +75,11 @@ bindkey '^[[B' history-substring-search-down
 bindkey "^R" history-incremental-search-backward  # ctrl-r
 bindkey "[B" history-search-forward               # down arrow
 bindkey "[A" history-search-backward              # up arrow
+
+if [[ "x$SYSTEM" = "xLinux" ]]; then
+    bindkey "^[[H" beginning-of-line
+    bindkey "^[[F" end-of-li ne
+    bindkey "^[[3~" delete-char
+    bindkey "^[[1;3C" forward-word
+    bindkey "^[[1;3D" backward-word
+fi

@@ -117,6 +117,12 @@ ZOXIDE=$(echo $BREW_PKGS|grep zoxide)
 if [ "x$ZOXIDE" = "x" ]; then LIBS+=("zoxide") fi
 GRAPHVIZ=$(echo $BREW_PKGS|grep graphviz)
 if [ "x$GRAPHVIZ" = "x" ]; then LIBS+=("graphviz") fi
+P7Z=$(echo $BREW_PKGS|grep p7zip)
+if [ "x$P7Z" = "x" ]; then LIBS+=("p7zip") fi
+NMAP=$(echo $BREW_PKGS|grep nmap)
+if [ "x$NMAP" = "x" ]; then LIBS+=("nmap") fi
+SCRUB=$(echo $BREW_PKGS|grep scrub)
+if [ "x$SCRUB" = "x" ]; then LIBS+=("scrub") fi
 
 if [ ${#TAPS[@]} -gt 0 ]; then
     brew tap $TAPS
@@ -130,6 +136,12 @@ fi
 if [ ${#CASKS[@]} -gt 0 ]; then
     brew install --cask $CASKS
     brew cleanup
+fi
+
+FZF=$HOME/.fzf
+if [ ! -d  "$FZF" ]; then
+    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+    ~/.fzf/install
 fi
 
 # Node

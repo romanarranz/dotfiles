@@ -18,6 +18,8 @@ source $HOME/.zshrc
 
 # System packages
 #
+# p7z
+sudo add-apt-repository universe
 sudo apt update -y \
 && sudo apt install -y \
     build-essential \
@@ -25,6 +27,10 @@ sudo apt update -y \
     gnome-screensaver \
     graphviz \
     ncdu \
+    nmap \
+    p7zip-full \
+    p7zip-rar \
+    scrub \
     snapd \
     vlc \
     wget \

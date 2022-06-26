@@ -123,6 +123,8 @@ NMAP=$(echo $BREW_PKGS|grep nmap)
 if [ "x$NMAP" = "x" ]; then LIBS+=("nmap") fi
 SCRUB=$(echo $BREW_PKGS|grep scrub)
 if [ "x$SCRUB" = "x" ]; then LIBS+=("scrub") fi
+MDCAT=$(echo $BREW_PKGS|grep mdcat)
+if [ "x$MDCAT" = "x" ]; then LIBS+=("mdcat") fi
 
 if [ ${#TAPS[@]} -gt 0 ]; then
     brew tap $TAPS

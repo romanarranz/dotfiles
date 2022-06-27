@@ -280,3 +280,24 @@ if [[ "$WHATWEB" =~ "not found" ]]; then
     ln -s $PWD/whatweb ~/bin/whatweb
     popd
 fi
+
+# Docker images
+#
+CURLIFIREFOX=$(docker images|grep lwthiker/curl-impersonate|grep 0.5-ff)
+if [ "x$CURLIFIREFOX" = "x" ]; then
+    docker pull lwthiker/curl-impersonate:0.5-ff
+fi
+CURLICHROME=$(docker images|grep lwthiker/curl-impersonate|grep 0.5-chrome)
+if [ "x$CURLICHROME" = "x" ]; then
+    docker pull lwthiker/curl-impersonate:0.5-chrome
+fi
+THEHARVESTER=$(docker images|grep theharvester)
+if [ "x$THEHARVESTER" = "x" ]; then
+    pushd ~/.local
+    if [ ! -d theHarvester ]; then
+        git clone https://github.com/laramies/theHarvester 
+    fi
+    cd theHarvester
+    docker build -t theharvester .
+    popd
+fi

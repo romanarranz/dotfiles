@@ -98,21 +98,21 @@ fi
 if [ -z $RBENV_ROOT ]; then
   export RBENV_ROOT="$HOME/.rbenv"
   export PATH="$RBENV_ROOT/bin:$RBENV_ROOT/shims:$PATH"
+  eval "$(rbenv init -)"
 fi
-eval "$(rbenv init -)"
 
 # PYENV
 if [ -z $PYENV_ROOT ]; then
-    export PYENV_ROOT="$HOME/.pyenv"
-    export PATH="$PYENV_ROOT/bin:$PATH"
+  export PYENV_ROOT="$HOME/.pyenv"
+  export PATH="$PYENV_ROOT/bin:$PATH"
+  PYENV_VER=$(pyenv -v)
+  if [[ $PYENV_VER =~ "pyenv 1." ]]; then
+    eval "$(pyenv init -)"
+  else
+    eval "$(pyenv init --path)"
+  fi
 fi
 
-PYENV_VER=$(pyenv -v)
-if [[ $PYENV_VER =~ "pyenv 1." ]]; then
-  eval "$(pyenv init -)"
-else
-  eval "$(pyenv init --path)"
-fi
 
 # POETRY
 if [ -d $HOME/.poetry ]; then

@@ -9,7 +9,6 @@ DISTRO="ubuntu"
 BREW=$(which brew)
 if [[ "$BREW" =~ "not found" ]]; then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    echo "# Brew env vars" >> $HOME/.zprofile
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
@@ -138,6 +137,11 @@ fi
 RBENV_DIR=$HOME/.rbenv
 if [ ! -d "$RBENV_DIR" ]; then
     git clone https://github.com/rbenv/rbenv.git $RBENV_DIR
+    pushd ~/.rbenv && src/configure && make -C src && popd
+
+    # ruby-build install
+    mkdir -p $RBENV_DIR/plugins
+    git clone https://github.com/rbenv/ruby-build.git $RBENV_DIR/plugins/ruby-build
     if [ "x$RBENV_ROOT" = "x" ]; then
         echo 'export RBENV_ROOT="$HOME/.rbenv"' >> ~/.zshrc
         echo 'export PATH="$RBENV_ROOT/bin:$RBENV_ROOT/shims:$PATH"' >> ~/.zshrc
@@ -295,7 +299,7 @@ THEHARVESTER=$(docker images|grep theharvester)
 if [ "x$THEHARVESTER" = "x" ]; then
     pushd ~/.local
     if [ ! -d theHarvester ]; then
-        git clone https://github.com/laramies/theHarvester 
+        git clone https://github.com/laramies/theHarvester
     fi
     cd theHarvester
     docker build -t theharvester .

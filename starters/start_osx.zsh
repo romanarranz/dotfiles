@@ -6,6 +6,9 @@ if [ "x$SYSTEM" = "xDarwin" ] && [ "$ARCH" = "arm" ]; then
     APPLE_CHIP="silicon"
 fi
 
+mkdir -p $HOME/bin
+mkdir -p $HOME/.local
+
 # Brew System Package manager
 #
 # Install brew

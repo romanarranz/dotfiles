@@ -13,6 +13,9 @@ if [[ "$BREW" =~ "not found" ]]; then
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
+mkdir -p $HOME/bin
+mkdir -p $HOME/.local
+
 source $HOME/.zprofile
 source $HOME/.zshrc
 

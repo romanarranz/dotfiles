@@ -22,10 +22,22 @@ source $HOME/.zshrc
 sudo add-apt-repository universe
 sudo apt update -y \
 && sudo apt install -y \
+    autoconf \
+    bison \
     build-essential \
+    curl \
     cmake \
+    coreutils \
+    git \
     gnome-screensaver \
     graphviz \
+    libreadline-dev \
+    libncurses5-dev \
+    libffi-dev \
+    libgdbm-dev \
+    libssl-dev \
+    libyaml-dev \
+    libreadline-dev \
     ncdu \
     nmap \
     p7zip-full \
@@ -35,7 +47,8 @@ sudo apt update -y \
     vlc \
     wget \
     whois \
-    xclip
+    xclip \
+    zlib1g-dev
 
 # Brew packages
 #
@@ -116,13 +129,32 @@ if [[ "$CDK_DIA" =~ "not found" ]]; then
     npm i -g cdk-dia
 fi
 
+# Ruby
+#
+# rbenv
+RBENV_DIR=$HOME/.rbenv
+if [ ! -d "$RBENV_DIR" ]; then
+    git clone https://github.com/rbenv/rbenv.git $RBENV_DIR
+    if [ "x$RBENV_ROOT" = "x" ]; then
+        echo 'export RBENV_ROOT="$HOME/.rbenv"' >> ~/.zshrc
+        echo 'export PATH="$RBENV_ROOT/bin:$RBENV_ROOT/shims:$PATH"' >> ~/.zshrc
+    fi
+fi
+source $HOME/.zshrc
+
+# ruby versions
+RUBY312=$(rbenv versions|grep 3.1.2)
+if [ "x$RUBY312" = "x" ]; then
+    rbenv install 3.1.2
+fi
+
 # Python
 #
 # pyenv
 PYENV_DIR=$HOME/.pyenv
 if [ ! -d "$PYENV_DIR" ]; then
     git clone https://github.com/pyenv/pyenv.git $PYENV_DIR
-    if [[ "x$PYENV_ROOT" =~ "not found" ]]; then
+    if [ "x$PYENV_ROOT" = "x" ]; then
         echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
         echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
     fi
@@ -221,9 +253,27 @@ fi
 #
 CGMEMTIME=$(which cgmemtime)
 if [[ "$CGMEMTIME" =~ "not found" ]]; then
+    pushd ~/.local
     git clone https://github.com/gsauthof/cgmemtime
     cd cgmemtime
     make
-    sudo ./cgmemtime --setup -g $GID --perm 775
-    sudo mv cgmemtime /usr/local/bin
+    sudo ./cgmemtime --setup -g $(groups $(whoami) | cut -d' ' -f1) --perm 775
+    ln -s $PWD/cgmemtime ~/bin/cgmemtime
+    popd
+fi
+
+# Scrapers
+#
+WHATWEB=$(which whatweb)
+if [[ "$WHATWEB" =~ "not found" ]]; then
+    pushd ~/.local
+    wget https://github.com/urbanadventurer/WhatWeb/archive/refs/tags/v0.5.5.tar.gz -O whatweb.tar.gz
+    tar -zxvf whatweb.tar.gz
+    cd WhatWeb-0.5.5/
+    gem install bundler
+    bundle update
+    bundle install
+    ./whatweb --version
+    ln -s $PWD/whatweb ~/bin/whatweb
+    popd
 fi

@@ -125,6 +125,8 @@ SCRUB=$(echo $BREW_PKGS|grep scrub)
 if [ "x$SCRUB" = "x" ]; then LIBS+=("scrub") fi
 MDCAT=$(echo $BREW_PKGS|grep mdcat)
 if [ "x$MDCAT" = "x" ]; then LIBS+=("mdcat") fi
+COREUTILS=$(echo $BREW_PKGS|grep coreutils)
+if [ "x$COREUTILS" = "x" ]; then LIBS+=("coreutils") fi
 
 if [ ${#TAPS[@]} -gt 0 ]; then
     brew tap $TAPS
@@ -177,6 +179,25 @@ CDK_DIA=$(which cdk-dia)
 if [[ "x$CDK_DIA" = "x" ]]; then
     # https://github.com/pistazie/cdk-dia
     npm i -g cdk-dia
+fi
+
+# Ruby
+#
+# rbenv
+RBENV_DIR=$HOME/.rbenv
+if [ ! -d "$RBENV_DIR" ]; then
+    git clone https://github.com/rbenv/rbenv.git $RBENV_DIR
+    if [ "x$RBENV_ROOT" = "x" ]; then
+        echo 'export RBENV_ROOT="$HOME/.rbenv"' >> ~/.zshrc
+        echo 'export PATH="$RBENV_ROOT/bin:$RBENV_ROOT/shims:$PATH"' >> ~/.zshrc
+    fi
+fi
+source $HOME/.zshrc
+
+# ruby versions
+RUBY312=$(rbenv versions|grep 3.1.2)
+if [ "x$RUBY312" = "x" ]; then
+    rbenv install 3.1.2
 fi
 
 # Python
@@ -295,10 +316,28 @@ fi
 # Profilers
 #
 CGMEMTIME=$(which cgmemtime)
-if [ "x$CGMEMTIME" = "x" ]; then
+if [[ "$CGMEMTIME" =~ "not found" ]]; then
+    pushd ~/.local
     git clone https://github.com/gsauthof/cgmemtime
     cd cgmemtime
     make
-    sudo ./cgmemtime --setup -g $GID --perm 775
-    sudo mv cgmemtime /usr/local/bin
+    sudo ./cgmemtime --setup -g $(groups $(whoami) | cut -d' ' -f1) --perm 775
+    ln -s $PWD/cgmemtime ~/bin/cgmemtime
+    popd
+fi
+
+# Scrapers
+#
+WHATWEB=$(which whatweb)
+if [[ "$WHATWEB" =~ "not found" ]]; then
+    pushd ~/.local
+    wget https://github.com/urbanadventurer/WhatWeb/archive/refs/tags/v0.5.5.tar.gz -O whatweb.tar.gz
+    tar -zxvf whatweb.tar.gz
+    cd WhatWeb-0.5.5/
+    gem install bundler
+    bundle update
+    bundle install
+    ./whatweb --version
+    ln -s $PWD/whatweb ~/bin/whatweb
+    popd
 fi

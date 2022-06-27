@@ -9,11 +9,6 @@ if [[ "x$SYSTEM" = "xLinux" ]]; then
   export _JAVA_AWT_WM_NONREPARENTING=1
 fi
 
-# Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
-HISTSIZE=1000
-SAVEHIST=1000
-HISTFILE=~/.zsh_history
-
 # Initialize zinit
 source ~/.zinit/bin/zinit.zsh
 
@@ -98,6 +93,13 @@ if [ -d $HOME/.nvm ]; then
   add-zsh-hook chpwd load-nvmrc
   load-nvmrc
 fi
+
+# RBENV
+if [ -z $RBENV_ROOT ]; then
+  export RBENV_ROOT="$HOME/.rbenv"
+  export PATH="$RBENV_ROOT/bin:$RBENV_ROOT/shims:$PATH"
+fi
+eval "$(rbenv init -)"
 
 # PYENV
 if [ -z $PYENV_ROOT ]; then

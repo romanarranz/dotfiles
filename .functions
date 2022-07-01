@@ -171,6 +171,39 @@ function man() {
     man "$@"
 }
 
+#
+# Get the range of dates for a specific week of the year
+#
+# > weekof 24 2022
+# "Mon Jun 13 2022" - "Sun Jun 19 2022"
+function weekof() {
+    local week=$1 year=$2
+    local week_num_of_Jan_1 week_day_of_Jan_1
+    local first_Mon
+    local date_fmt="+%a %b %d %Y"
+    local mon sun
+
+	cmd=date
+	if [[ "x$SYSTEM" = "xDarwin" ]]; then
+		# requires coreutils to be installed
+		cmd=gdate
+	fi
+
+	# dynamic command substitution -- date or gdate
+    week_num_of_Jan_1=$(eval ${$(echo "$cmd --date=$year-01-01 +%W")})
+    week_day_of_Jan_1=$(eval ${$(echo "$cmd --date=$year-01-01 +%u")})
+
+    if ((week_num_of_Jan_1)); then
+        first_Mon=$year-01-01
+    else
+        first_Mon=$year-01-$((01 + (7 - week_day_of_Jan_1 + 1) ))
+    fi
+
+    mon=$(eval ${$(echo "$cmd --date=\"$first_Mon +$((week - 1)) week\" \"$date_fmt\"")})
+    sun=$(eval ${$(echo "$cmd --date=\"$first_Mon +$((week - 1)) week + 6 day\" \"$date_fmt\"")})
+    echo "\"$mon\" - \"$sun\""
+}
+
 function rmk(){
 	scrub -p dod $1
 	shred -zun 10 -v $1

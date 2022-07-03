@@ -133,6 +133,16 @@ if [ "x$COREUTILS" = "x" ]; then LIBS+=("coreutils") fi
 # Updated version of bash
 BASH=$(echo $BREW_PKGS|grep bash)
 if [ "x$BASH" = "x" ]; then LIBS+=("bash") fi
+# Networking
+MTR=$(echo $BREW_PKGS|grep mtr)
+if [ "x$MTR" = "x" ]; then LIBS+=("mtr") fi
+IPCALC=$(echo $BREW_PKGS|grep ipcalc)
+if [ "x$IPCALC" = "x" ]; then LIBS+=("ipcalc") fi
+GREPCIDR=$(echo $BREW_PKGS|grep grepcidr)
+if [ "x$GREPCIDR" = "x" ]; then LIBS+=("grepcidr") fi
+# https://github.com/theZiz/aha
+AHA=$(echo $BREW_PKGS|grep aha)
+if [ "x$AHA" = "x" ]; then LIBS+=("aha") fi
 
 if [ ${#TAPS[@]} -gt 0 ]; then
     brew tap $TAPS

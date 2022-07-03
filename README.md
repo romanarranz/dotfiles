@@ -1,10 +1,22 @@
 # Roman's dotfiles
 
-The configurations are for my macOS workstation and therefore contain some macOS-specific code and commands.
+The configurations are for my Linux/macOS workstation and therefore contain some Linux/macOS-specific code and commands.
 
 ![](./assets/prompt.png)
 
 ## Quick Start
+
+Install zsh
+
+```
+# macOS
+brew install zsh
+chsh -s /usr/local/bin/zsh
+# Linux
+apt install zsh
+```
+
+Clone this repository
 
 ```
 # get to the home folder

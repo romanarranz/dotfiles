@@ -130,6 +130,9 @@ MDCAT=$(echo $BREW_PKGS|grep mdcat)
 if [ "x$MDCAT" = "x" ]; then LIBS+=("mdcat") fi
 COREUTILS=$(echo $BREW_PKGS|grep coreutils)
 if [ "x$COREUTILS" = "x" ]; then LIBS+=("coreutils") fi
+# Updated version of bash
+BASH=$(echo $BREW_PKGS|grep bash)
+if [ "x$BASH" = "x" ]; then LIBS+=("bash") fi
 
 if [ ${#TAPS[@]} -gt 0 ]; then
     brew tap $TAPS

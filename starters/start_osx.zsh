@@ -143,6 +143,8 @@ if [ "x$GREPCIDR" = "x" ]; then LIBS+=("grepcidr") fi
 # https://github.com/theZiz/aha
 AHA=$(echo $BREW_PKGS|grep aha)
 if [ "x$AHA" = "x" ]; then LIBS+=("aha") fi
+JUST=$(echo $BREW_PKGS|grep just)
+if [ "x$JUST" = "x" ]; then LIBS+=("just") fi
 
 if [ ${#TAPS[@]} -gt 0 ]; then
     brew tap $TAPS

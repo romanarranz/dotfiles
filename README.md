@@ -24,12 +24,18 @@ $ cd
 
 # pull the git repos
 $ git clone https://github.com/romanarranz/dotfiles.git .zsh-config
+```
+
+Install dependencies
+
+```
+$ ./.zsh-config/starters/start_linux.zsh
 
 # then link the startup files
 $ zsh ~/.zsh-config/bootstrap.zsh
 
 # add gitconfig options
-cat config/.gitconfig >> ~/.gitconfig
+$ cat  ~/.zsh-config/config/.gitconfig >> ~/.gitconfig
 ```
 
 ## Programming languages setup

@@ -3,21 +3,6 @@
 ARCH=$(uname -p)
 DISTRO="ubuntu"
 
-# Brew System Package manager
-#
-# Install brew
-BREW=$(which brew)
-if [[ "$BREW" =~ "not found" ]]; then
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-fi
-
-mkdir -p $HOME/bin
-mkdir -p $HOME/.local
-
-source $HOME/.zprofile
-source $HOME/.zshrc
-
 # System packages
 #
 # p7z
@@ -30,6 +15,7 @@ sudo apt update -y \
     curl \
     cmake \
     coreutils \
+    fonts-powerline \
     git \
     gnome-screensaver \
     graphviz \
@@ -52,6 +38,40 @@ sudo apt update -y \
     xclip \
     zlib1g-dev
 
+# Create user dirs
+mkdir -p $HOME/bin
+mkdir -p $HOME/.local
+
+if [[ $SHELL != "/usr/bin/zsh" ]]; then
+    sudo apt install -y zsh
+    chsh -s $(which zsh)
+    # desktop session logout -- required to reload zsh
+    gnome-session-quit
+fi
+
+# Brew System Package manager
+#
+# Install brew
+BREW=$(which brew)
+if [[ "$BREW" =~ "not found" ]]; then
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
+
+# ohmyzsh
+if [ ! -d ~/.oh-my-zsh ]; then
+    /bin/sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+fi
+
+ZOXIDE=$(which zoxide)
+if [[ "$ZOXIDE" =~ "not found" ]]; then
+    curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | bash
+fi
+
+source $HOME/.zprofile
+source $HOME/.zshrc
+
+
 # Brew packages
 #
 TAPS=()
@@ -59,27 +79,27 @@ LIBS=()
 CASKS=()
 BREW_PKGS=$(brew list)
 AWSCURL=$(echo $BREW_PKGS|grep awscurl)
-if [[ "x$AWSCURL" =~ "not found" ]]; then LIBS+=("awscurl") fi
+if [[ "x$AWSCURL" = "x" ]]; then LIBS+=("awscurl") fi
 FD=$(echo $BREW_PKGS|grep fd)
-if [[ "x$FD" =~ "not found" ]]; then LIBS+=("fd") fi
+if [[ "x$FD" = "x" ]]; then LIBS+=("fd") fi
 # https://github.com/ibraheemdev/modern-unix
 DUST=$(echo $BREW_PKGS|grep dust)
-if [[ "x$DUST" =~ "not found" ]]; then LIBS+=("dust") fi
+if [[ "x$DUST" = "x" ]]; then LIBS+=("dust") fi
 DOG=$(echo $BREW_PKGS|grep dog)
-if [[ "x$DOG" =~ "not found" ]]; then LIBS+=("dog") fi
+if [[ "x$DOG" = "x" ]]; then LIBS+=("dog") fi
 GPING=$(echo $BREW_PKGS|grep gping)
-if [[ "x$GPING" =~ "not found" ]]; then LIBS+=("orf/brew/gping") fi
+if [[ "x$GPING" = "x" ]]; then LIBS+=("gping") fi
 PROCS=$(echo $BREW_PKGS|grep procs)
-if [[ "x$PROCS" =~ "not found" ]]; then LIBS+=("procs") fi
+if [[ "x$PROCS" = "x" ]]; then LIBS+=("procs") fi
 DUF=$(echo $BREW_PKGS|grep duf)
-if [[ "x$DUF" =~ "not found" ]]; then LIBS+=("duf") fi
+if [[ "x$DUF" = "x" ]]; then LIBS+=("duf") fi
 BAT=$(echo $BREW_PKGS|grep bat)
-if [[ "x$BAT" =~ "not found" ]]; then LIBS+=("bat") fi
+if [[ "x$BAT" = "x" ]]; then LIBS+=("bat") fi
+EXA=$(echo $BREW_PKGS|grep exa)
+if [[ "x$EXA" = "x" ]]; then LIBS+=("exa") fi
 # https://github.com/dandavison/delta
 GIT_DELTA=$(echo $BREW_PKGS|grep git-delta)
-if [[ "x$GIT_DELTA" =~ "not found" ]]; then LIBS+=("git-delta") fi
-ZOXIDE=$(echo $BREW_PKGS|grep zoxide)
-if [[ "x$ZOXIDE" =~ "not found" ]]; then LIBS+=("zoxide") fi
+if [[ "x$GIT_DELTA" = "x" ]]; then LIBS+=("git-delta") fi
 
 if [ ${#TAPS[@]} -gt 0 ]; then
     brew tap $TAPS
@@ -118,8 +138,12 @@ fi
 NODE16=$(echo $NODE_VERSIONS|grep v16)
 if [[ "x$NODE16" =~ "not found" ]]; then
     nvm install 16
+fi
+NODE=$(which npm)
+if [[ "$NODE" =~ "not found" ]]; then
     nvm use 16
 fi
+
 TLDR=$(which tldr)
 if [[ "$TLDR" =~ "not found" ]]; then
     # https://github.com/tldr-pages/tldr
@@ -182,6 +206,10 @@ PYTHON39=$(pyenv versions|grep 3.9)
 if [ "x$PYTHON39" = "x" ]; then
     pyenv install 3.9.4
 fi
+PYTHON=$(python --version)
+if [[ "$PYTHON" =~ "not found" ]]; then
+    pyenv global 3.9.4
+fi
 
 # Poetry
 #
@@ -196,7 +224,7 @@ fi
 #
 RUSTUP=$(which rustup)
 if [[ "$RUSTUP" =~ "not found" ]]; then
-    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs|sh
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs|sh -s -- -y
 fi
 
 # Java
@@ -208,7 +236,7 @@ if [ ! -d $SDKMAN_DIR ]; then
     source "$HOME/.sdkman/bin/sdkman-init.sh"
 fi
 
-JAVA_VERSIONS=$(sdk ls java|grep installed)
+JAVA_VERSIONS=$(sdk ls java|grep 'installed\|local')
 JAVA17=$(echo $JAVA_VERSIONS|grep 17)
 if [[ "x$JAVA17" = "x" ]]; then
     sdk install java 17.0.2-tem
@@ -253,7 +281,7 @@ AWS=$(which aws)
 if [[ "$AWS" =~ "not found" ]]; then
     curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
     unzip awscliv2.zip
-    ./aws/install -i /usr/local/aws-cli -b /usr/local/bin
+    sudo ./aws/install -i /usr/local/aws-cli -b /usr/local/bin
 fi
 
 # Profilers

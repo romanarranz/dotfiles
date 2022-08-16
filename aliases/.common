@@ -31,6 +31,9 @@ alias d-c='docker-compose $*'
 alias curlc='docker run --rm -it lwthiker/curl-impersonate:0.5-chrome curl_chrome101'
 alias curlf='docker run --rm -it lwthiker/curl-impersonate:0.5-ff curl_ff100'
 alias harv='docker run --rm -it --entrypoint /app/theHarvester.py theharvester'
+if [[ $(which docker-compose) =~ "not found" ]]; then
+    alias docker-compose="docker compose"
+fi
 
 # Always enable colored `grep` output
 # Note: `GREP_OPTIONS='--color=auto'` is deprecated, hence the alias usage.

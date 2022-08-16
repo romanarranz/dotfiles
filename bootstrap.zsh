@@ -23,6 +23,7 @@ function zsh_bootstrap(){
     ln -sf ${ZSHCONFIG}/zprofile ${HOME}/.zprofile
     ln -sf ${ZSHCONFIG}/zshenv ${HOME}/.zshenv
     ln -sf ${ZSHCONFIG}/zshrc ${HOME}/.zshrc
+    ln -sf ${ZSHCONFIG}/config/.p10k.zsh ${HOME}/.p10k.zsh
     echo "Done!"
 }
 

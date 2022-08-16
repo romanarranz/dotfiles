@@ -6,41 +6,65 @@ DISTRO="ubuntu"
 # System packages
 #
 # p7z
-sudo add-apt-repository universe
+sudo add-apt-repository universe ppa:obsproject/obs-studio
 sudo apt update -y \
 && sudo apt install -y \
-    autoconf \
-    bison \
-    build-essential \
-    curl \
-    cmake \
-    coreutils \
-    fonts-powerline \
-    git \
-    gnome-screensaver \
-    graphviz \
-    libreadline-dev \
-    libncurses5-dev \
-    libffi-dev \
-    libgdbm-dev \
-    libssl-dev \
-    libyaml-dev \
-    libreadline-dev \
-    ncdu \
-    nmap \
-    p7zip-full \
-    p7zip-rar \
-    scrub \
-    snapd \
-    vlc \
-    wget \
-    whois \
-    xclip \
-    zlib1g-dev
+autoconf \
+bison \
+build-essential \
+ca-certificates \
+curl \
+cmake \
+coreutils \
+git \
+gnome-screensaver \
+gnupg \
+graphviz \
+libreadline-dev \
+libncurses5-dev \
+libffi-dev \
+libgdbm-dev \
+libssl-dev \
+libyaml-dev \
+libreadline-dev \
+lsb-release \
+ncdu \
+nmap \
+obs-studio \
+p7zip-full \
+p7zip-rar \
+scrub \
+snapd \
+vlc \
+wget \
+whois \
+xclip \
+zlib1g-dev \
+zsh
 
 # Create user dirs
 mkdir -p $HOME/bin
 mkdir -p $HOME/.local
+mkdir -p $HOME/.local/share/fonts
+
+# Download fonts
+FONT_URLS=(
+    "https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf"
+    "https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold.ttf"
+    "https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Italic.ttf"
+    "https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold%20Italic.ttf"
+)
+
+for font in "${FONT_URLS[@]}"; do
+    filename=$(basename "$font")
+    rm ~/.local/share/fonts/$filename ~/.local/share/fonts/$filename.*
+    wget $font -P ~/.local/share/fonts
+done
+
+sudo apt install fonts-firacode
+
+# Regenerate fonts cache
+fc-cache -vf ~/.local/share/fonts/
 
 if [[ $SHELL != "/usr/bin/zsh" ]]; then
     sudo apt install -y zsh
@@ -141,7 +165,7 @@ if [[ "x$NODE16" =~ "not found" ]]; then
 fi
 NODE=$(which npm)
 if [[ "$NODE" =~ "not found" ]]; then
-    nvm use 16
+    nvm alias default 16
 fi
 
 TLDR=$(which tldr)
@@ -162,7 +186,7 @@ RBENV_DIR=$HOME/.rbenv
 if [ ! -d "$RBENV_DIR" ]; then
     git clone https://github.com/rbenv/rbenv.git $RBENV_DIR
     pushd ~/.rbenv && src/configure && make -C src && popd
-
+    
     # ruby-build install
     mkdir -p $RBENV_DIR/plugins
     git clone https://github.com/rbenv/ruby-build.git $RBENV_DIR/plugins/ruby-build
@@ -311,6 +335,33 @@ if [[ "$WHATWEB" =~ "not found" ]]; then
     ./whatweb --version
     ln -s $PWD/whatweb ~/bin/whatweb
     popd
+fi
+
+# Docker
+DOCKER=$(which docker)
+if [[ "$DOCKER" =~ "not found" ]]; then
+    sudo apt remove docker-desktop
+    rm -r $HOME/.docker/desktop
+    sudo rm /usr/local/bin/com.docker.cli
+    sudo apt purge docker-desktop
+    rm ~/.config/systemd/user/docker-desktop.service ~/.local/share/systemd/user/docker-desktop.service
+    # add docker's official GPG key
+    sudo mkdir -p /etc/apt/keyrings
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+    # setup apt repository
+    echo \
+    "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+    $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+    # download and install
+    wget "https://desktop.docker.com/linux/main/amd64/docker-desktop-4.11.0-amd64.deb?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-linux-amd64"
+    sudo apt-get install ./docker-desktop-4.11.0-amd64.deb
+    # launch
+    systemctl --user start docker-desktop
+fi
+
+LAZYDOCKER=$(which lazydocker)
+if [[ "$LAZYDOCKER" =~ "not found" ]]; then
+    curl "https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh" | bash
 fi
 
 # Docker images

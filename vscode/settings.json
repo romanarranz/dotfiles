@@ -1,4 +1,4 @@
-{    
+{
     "[json]": {
       "editor.formatOnSave": false,
       "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -87,4 +87,4 @@
     "workbench.editorAssociations": {
         "*.ipynb": "jupyter-notebook"
     }
-  }
+}

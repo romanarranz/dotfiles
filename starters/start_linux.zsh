@@ -167,6 +167,10 @@ NODE=$(which npm)
 if [[ "$NODE" =~ "not found" ]]; then
     nvm alias default 16
 fi
+PNPM=$(which pnpm)
+if [[ "$PNPM" =~ "not found" ]]; then
+    npm i -g pnpm
+fi
 
 TLDR=$(which tldr)
 if [[ "$TLDR" =~ "not found" ]]; then

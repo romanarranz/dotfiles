@@ -128,6 +128,8 @@ SCRUB=$(echo $BREW_PKGS|grep scrub)
 if [ "x$SCRUB" = "x" ]; then LIBS+=("scrub") fi
 MDCAT=$(echo $BREW_PKGS|grep mdcat)
 if [ "x$MDCAT" = "x" ]; then LIBS+=("mdcat") fi
+WATCH=$(echo $BREW_PKGS|grep watch)
+if [ "x$WATCH" = "x" ]; then LIBS+=("watch") fi
 COREUTILS=$(echo $BREW_PKGS|grep coreutils)
 if [ "x$COREUTILS" = "x" ]; then LIBS+=("coreutils") fi
 # Updated version of bash
@@ -276,6 +278,7 @@ fi
 #
 RUSTUP=$(which rustup)
 if [ "x$RUSTUP" = "x" ]; then
+    # https://doc.bccnsoft.com/docs/rust-1.36.0-docs-html/edition-guide/rust-2018/rustup-for-managing-rust-versions.html
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs|sh
 fi
 

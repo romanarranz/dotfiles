@@ -20,6 +20,7 @@ git \
 gnome-screensaver \
 gnupg \
 graphviz \
+jq \
 libreadline-dev \
 libncurses5-dev \
 libffi-dev \

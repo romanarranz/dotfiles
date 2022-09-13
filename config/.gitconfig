@@ -12,3 +12,7 @@ conflictstyle = diff3
 
 [diff]
 colorMoved = default
+
+[user]
+name = CHANGEME
+email = changeme@domain.com

@@ -38,6 +38,10 @@ $ zsh ~/.zsh-config/bootstrap.zsh
 $ cat  ~/.zsh-config/config/.gitconfig >> ~/.gitconfig
 ```
 
+Post configurations
+
+1. Configure your git user and email at `~/.gitconfig` copied from `config/.gitconfig`
+
 ## Programming languages setup
 
 Python dual setup for version 2 and 3

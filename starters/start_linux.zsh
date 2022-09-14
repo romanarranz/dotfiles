@@ -21,6 +21,7 @@ gnome-screensaver \
 gnupg \
 graphviz \
 jq \
+htop \
 libreadline-dev \
 libncurses5-dev \
 libffi-dev \

@@ -274,3 +274,9 @@ function sha() {
 		sha1sum $input | awk '{ print $1 }'
 	fi
 }
+
+# Make a gif from a video
+function gify() {
+	local in=$1 out=$2
+	ffmpeg -i $in -f gif $out
+}

@@ -16,6 +16,7 @@ ca-certificates \
 curl \
 cmake \
 coreutils \
+ffmpeg \
 git \
 gnome-screensaver \
 gnupg \

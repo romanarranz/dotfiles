@@ -183,6 +183,10 @@ function weekof() {
     local date_fmt="+%a %b %d %Y"
     local mon sun
 
+	if [ "x$year" = "x" ]; then
+		year=$(date +%Y)
+	fi
+
 	cmd=date
 	if [[ "x$SYSTEM" = "xDarwin" ]]; then
 		# requires coreutils to be installed

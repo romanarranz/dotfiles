@@ -297,6 +297,7 @@ fi
 FLUTTER332=$(fvm list|grep 3.3.2)
 if [ "x$FLUTTER332" = "x" ]; then
   fvm install 3.3.2
+  fvm global 3.3.2
 fi
 
 # Kubernetes

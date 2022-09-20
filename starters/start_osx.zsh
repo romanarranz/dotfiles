@@ -151,6 +151,11 @@ JUST=$(echo $BREW_PKGS|grep just)
 if [ "x$JUST" = "x" ]; then LIBS+=("just") fi
 PROTOC=$(echo $BREW_PKGS|grep protobuf)
 if [ "x$PROTOC" = "x" ]; then LIBS+=("protobuf") fi
+FVM=$(echo $BREW_PKGS|grep fvm)
+if [ "x$FVM" = "x" ]; then
+  TAPS+=("leoafarias/fvm")
+  LIBS+=("fvm")
+fi
 
 if [ ${#TAPS[@]} -gt 0 ]; then
   brew tap $TAPS
@@ -284,6 +289,14 @@ RUSTUP=$(which rustup)
 if [ "x$RUSTUP" = "x" ]; then
   # https://doc.bccnsoft.com/docs/rust-1.36.0-docs-html/edition-guide/rust-2018/rustup-for-managing-rust-versions.html
   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs|sh
+fi
+
+# Flutter https://docs.flutter.dev/development/tools/sdk/releases
+#
+# fvm
+FLUTTER332=$(fvm list|grep 3.3.2)
+if [ "x$FLUTTER332" = "x" ]; then
+  fvm install 3.3.2
 fi
 
 # Kubernetes

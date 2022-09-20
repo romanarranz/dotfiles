@@ -298,6 +298,11 @@ FLUTTER332=$(fvm list|grep 3.3.2)
 if [ "x$FLUTTER332" = "x" ]; then
   fvm install 3.3.2
   fvm global 3.3.2
+  source $HOME/.zshrc
+  # disable desktop support
+  flutter config --no-enable-macos-desktop
+  flutter config --no-enable-windows-desktop
+  flutter config --no-enable-linux-desktop
 fi
 
 # Kubernetes

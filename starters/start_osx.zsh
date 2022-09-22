@@ -117,6 +117,9 @@ if [ "x$BAT" = "x" ]; then LIBS+=("bat") fi
 # https://github.com/dandavison/delta
 GIT_DELTA=$(echo $BREW_PKGS|grep git-delta)
 if [ "x$GIT_DELTA" = "x" ]; then LIBS+=("git-delta") fi
+# https://github.com/awslabs/git-secrets
+GIT_SECRETS=$(echo $BREW_PKGS|grep git-secrets)
+if [ "x$GIT_SECRETS" = "x" ]; then LIBS+=("git-secrets") fi
 # https://github.com/ajeetdsouza/zoxide
 ZOXIDE=$(echo $BREW_PKGS|grep zoxide)
 if [ "x$ZOXIDE" = "x" ]; then LIBS+=("zoxide") fi

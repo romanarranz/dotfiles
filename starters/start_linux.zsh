@@ -256,7 +256,16 @@ fi
 #
 RUSTUP=$(which rustup)
 if [[ "$RUSTUP" =~ "not found" ]]; then
+  # https://doc.bccnsoft.com/docs/rust-1.36.0-docs-html/edition-guide/rust-2018/rustup-for-managing-rust-versions.html
   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs|sh -s -- -y
+fi
+
+# WASM
+#
+WASM=$(which wasmtime)
+if [ "x$WASM" = "x" ]; then
+  # https://github.com/bytecodealliance/wasmtime
+  curl https://wasmtime.dev/install.sh -sSf | bash
 fi
 
 # Java

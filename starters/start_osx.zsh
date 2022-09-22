@@ -291,6 +291,14 @@ if [ "x$RUSTUP" = "x" ]; then
   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs|sh
 fi
 
+# WASM
+#
+WASM=$(which wasmtime)
+if [ "x$WASM" = "x" ]; then
+  # https://github.com/bytecodealliance/wasmtime
+  curl https://wasmtime.dev/install.sh -sSf | bash
+fi
+
 # Flutter https://docs.flutter.dev/development/tools/sdk/releases
 #
 # fvm

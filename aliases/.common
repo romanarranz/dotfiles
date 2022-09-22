@@ -63,3 +63,6 @@ alias python2='~/.pyenv/versions/2.7.18/bin/python2'
 # flutter + dart
 alias flutter='fvm flutter'
 alias dart='fvm dart'
+
+# wasm
+alias wasm='wasmtime'

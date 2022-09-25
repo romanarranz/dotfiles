@@ -366,6 +366,13 @@ fi
 AWS=$(which aws)
 if [ "x$AWS" = "x" ]; then
   pip3 install awscli
+
+  # Session Manager Plugin https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-install-plugin.html
+  if [ ! -d "/usr/local/sessionmanagerplugin" ]; then
+    curl "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/mac/sessionmanager-bundle.zip" -o "sessionmanager-bundle.zip"
+    unzip sessionmanager-bundle.zip
+    sudo ./sessionmanager-bundle/install -i /usr/local/sessionmanagerplugin -b /usr/local/bin/session-manager-plugin
+  fi
 fi
 
 # Profilers
@@ -396,6 +403,10 @@ if [[ "$WHATWEB" =~ "not found" ]]; then
   ln -s $PWD/whatweb ~/bin/whatweb
   popd
 fi
+
+# YoutubeDL
+#
+# https://github.com/ytdl-org/youtube-dl
 
 # Docker images
 #

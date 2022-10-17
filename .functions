@@ -280,3 +280,12 @@ function gify() {
 	local in=$1 out=$2
 	ffmpeg -i $in -f gif $out
 }
+
+# Displays the files changed since the commit 1 to the commit 2
+#
+# Examples: 
+#	changes HEAD~1 HEAD
+#	changes 846b560 HEAD
+function changes() {
+  git diff --name-only --diff-filter=AMDR $1..$2
+}

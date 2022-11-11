@@ -241,6 +241,12 @@ if [ -z $GOPATH ]; then
   mkdir -p $GOPATH
 fi
 
+# golang binaries
+PNG2SVG=$(which png2svg)
+if [ "x$PNG2SVG" = "x" ] || [[ "$PNG2SVG" =~ "not found" ]]; then
+  go install github.com/xyproto/png2svg/cmd/png2svg@latest
+fi
+
 # Python
 #
 # pyenv

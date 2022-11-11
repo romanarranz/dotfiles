@@ -113,6 +113,15 @@ if [ -z $PYENV_ROOT ]; then
   fi
 fi
 
+# GO
+if [ -z $GOPATH ]; then
+  export GOPATH="$HOME/go"
+  export PATH="$GOPATH/bin:$PATH"
+
+  if [ ! -d $GOPATH ]; then
+    mkdir -p $GOPATH
+  fi
+fi
 
 # POETRY
 if [ -d $HOME/.poetry ]; then

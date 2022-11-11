@@ -62,6 +62,8 @@ JQ=$(echo $BREW_PKGS|grep jq)
 if [ "x$JQ" = "x" ]; then LIBS+=("jq") fi
 HELM=$(echo $BREW_PKGS|grep helm)
 if [ "x$HELM" = "x" ]; then LIBS+=("helm") fi
+GO=$(echo $BREW_PKGS|grep go)
+if [ "x$GO" = "x" ]; then LIBS+=("go") fi
 HEROKU=$(echo $BREW_PKGS|grep heroku)
 if [ "x$HEROKU" = "x" ]; then
   TAPS+=("heroku/brew")
@@ -230,6 +232,13 @@ source $HOME/.zshrc
 RUBY312=$(rbenv versions|grep 3.1.2)
 if [ "x$RUBY312" = "x" ]; then
   rbenv install 3.1.2
+fi
+
+# Golang
+#
+if [ -z $GOPATH ]; then
+  export GOPATH="$HOME/go"
+  mkdir -p $GOPATH
 fi
 
 # Python

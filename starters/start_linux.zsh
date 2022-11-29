@@ -325,6 +325,13 @@ if [[ "$AWS" =~ "not found" ]]; then
   sudo ./aws/install -i /usr/local/aws-cli -b /usr/local/bin
 fi
 
+SAW=$(which saw)
+if [[ "$SAW" =~ "not found" ]]; then
+  wget https://github.com/TylerBrock/saw/releases/download/v0.2.2/saw_0.2.2_linux_amd64.deb
+  sudo dpkg -i saw_0.2.2_linux_amd64.deb
+  rm saw_0.2.2_linux_amd64.deb
+fi
+
 # Profilers
 #
 CGMEMTIME=$(which cgmemtime)

@@ -161,6 +161,11 @@ if [ "x$FVM" = "x" ]; then
   TAPS+=("leoafarias/fvm")
   LIBS+=("fvm")
 fi
+SAW=$(echo $BREW_PKGS|grep saw)
+if [ "x$SAW" = "x" ]; then
+  TAPS+=("TylerBrock/saw")
+  LIBS+=("saw")
+fi
 
 if [ ${#TAPS[@]} -gt 0 ]; then
   brew tap $TAPS

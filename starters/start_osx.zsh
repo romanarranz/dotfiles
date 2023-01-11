@@ -448,3 +448,7 @@ if [ "x$THEHARVESTER" = "x" ]; then
   docker build -t theharvester .
   popd
 fi
+
+# Scripts
+#
+wget -O $HOME/bin/nDorker.py https://raw.githubusercontent.com/nerrorsec/Google-Dorker/master/nDorker.py

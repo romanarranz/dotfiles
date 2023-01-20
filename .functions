@@ -289,3 +289,18 @@ function gify() {
 function changes() {
   git diff --name-only --diff-filter=AMDR $1..$2
 }
+
+function jsondiff() {
+	echo "$1"
+	echo "$2"
+	jq -r "[paths | join('.')]" < $1 > /tmp/diff1.json
+	jq -r "[paths | join('.')]" < $2 > /tmp/diff2.json
+	git diff /tmp/diff1.json /tmp/diff2.json
+}
+
+function killport() {
+	local port=$1
+	pid=$(lsof -t -i:$port)
+	echo "SIGKILL to PID $pid on port $port"
+	kill -9 $pid
+}

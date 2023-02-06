@@ -68,3 +68,6 @@ alias dart='fvm dart'
 alias wasm='wasmtime'
 
 # TODO: aws aliases https://github.com/awslabs/awscli-aliases/blob/master/alias
+
+# git
+alias glg="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"

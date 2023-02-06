@@ -56,3 +56,5 @@ pyenv global 3.9.4 2.7.18
 - https://github.com/htr3n/zsh-config
 - https://github.com/broucz/dotfiles
 - https://github.com/thoughtbot/dotfiles
+- https://towardsthecloud.com/automatically-set-up-macos-development
+- https://github.com/dotphiles/dotphiles

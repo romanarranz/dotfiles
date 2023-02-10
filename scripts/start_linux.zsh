@@ -7,6 +7,7 @@ DISTRO="ubuntu"
 #
 # p7z
 sudo add-apt-repository universe ppa:obsproject/obs-studio
+sudo add-apt-repository ppa:apandada1/xournalpp-stable
 sudo apt update -y \
 && sudo apt install -y \
 autoconf \
@@ -44,6 +45,7 @@ wget \
 whois \
 xclip \
 zlib1g-dev \
+xournalpp \
 zsh
 
 # Create user dirs

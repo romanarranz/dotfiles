@@ -79,6 +79,8 @@ CMAKE=$(echo $BREW_PKGS|grep cmake)
 if [ "x$CMAKE" = "x" ]; then LIBS+=("cmake") fi
 POPPLER=$(echo $BREW_PKGS|grep poppler)
 if [ "x$POPPLER" = "x" ]; then LIBS+=("poppler") fi
+GNUSED=$(echo $BREW_PKGS|grep gnu-sed)
+if [ "x$GNUSED" = "x" ]; then LIBS+=("gnu-sed") fi
 READLINE=$(echo $BREW_PKGS|grep readline)
 if [ "x$READLINE" = "x" ]; then LIBS+=("readline") fi
 RGA=$(echo $BREW_PKGS|grep ripgrep-all)
@@ -185,6 +187,11 @@ FZF=$HOME/.fzf
 if [ ! -d  "$FZF" ]; then
   git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
   ~/.fzf/install
+fi
+
+# Symlinks
+if [ ! -f /usr/local/bin/sed ]; then
+  sudo ln -s $(which gsed) /usr/local/bin/sed
 fi
 
 # Node

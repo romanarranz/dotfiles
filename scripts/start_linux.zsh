@@ -262,6 +262,12 @@ if [[ "$RUSTUP" =~ "not found" ]]; then
   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs|sh -s -- -y
 fi
 
+# rust binaries
+ZELLIJ=$(which zellij)
+if [ "x$ZELLIJ" = "x" ] || [[ "$ZELLIJ" =~ "not found" ]]; then
+  cargo install --locked zellij
+fi
+
 # WASM
 #
 WASM=$(which wasmtime)

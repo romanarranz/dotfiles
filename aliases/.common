@@ -52,6 +52,7 @@ alias cls='clear'
 
 # editor shortcut
 alias e='exec "${EDITOR}" \"${1:-.}\"'
+alias c='code \"${1:-.}\"'
 
 # cleanup
 alias delvenvs='find . -name ".venv" -type d -prune -exec rm -rf "{}" +'

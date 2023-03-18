@@ -168,6 +168,11 @@ if [ "x$SAW" = "x" ]; then
   TAPS+=("TylerBrock/saw")
   LIBS+=("saw")
 fi
+TERRAFORM=$(echo $BREW_PKGS|grep terraform)
+if [ "x$TERRAFORM" = "x" ]; then
+  TAPS+=("hashicorp/tap")
+  LIBS+=("hashicorp/tap/terraform")
+fi
 
 if [ ${#TAPS[@]} -gt 0 ]; then
   brew tap $TAPS

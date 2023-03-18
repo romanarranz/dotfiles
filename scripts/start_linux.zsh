@@ -5,7 +5,6 @@ DISTRO="ubuntu"
 
 # System packages
 #
-# p7z
 sudo add-apt-repository universe ppa:obsproject/obs-studio
 sudo add-apt-repository ppa:apandada1/xournalpp-stable
 sudo apt update -y \
@@ -40,6 +39,7 @@ p7zip-full \
 p7zip-rar \
 scrub \
 snapd \
+software-properties-common \
 vlc \
 wget \
 whois \
@@ -338,6 +338,24 @@ if [[ "$SAW" =~ "not found" ]]; then
   wget https://github.com/TylerBrock/saw/releases/download/v0.2.2/saw_0.2.2_linux_amd64.deb
   sudo dpkg -i saw_0.2.2_linux_amd64.deb
   rm saw_0.2.2_linux_amd64.deb
+fi
+
+TERRAFORM=$(which terraform)
+if [[ "$TERRAFORM" =~ "not found" ]]; then
+  # GPG keys
+  wget -O- https://apt.releases.hashicorp.com/gpg | \
+  gpg --dearmor | \
+  sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg
+  # terraform key's fingerprint verification
+  gpg --no-default-keyring \
+  --keyring /usr/share/keyrings/hashicorp-archive-keyring.gpg \
+  --fingerprint
+  # Add the official HashiCorp repository to your system
+  echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] \
+  https://apt.releases.hashicorp.com $(lsb_release -cs) main" | \
+  sudo tee /etc/apt/sources.list.d/hashicorp.list
+  sudo apt update
+  sudo apt install -y terraform
 fi
 
 # Profilers

@@ -73,3 +73,6 @@ alias wasm='wasmtime'
 
 # git
 alias glg="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
+
+# zellij
+alias zj="zellij --layout ~/.zsh-config/config/zellij__onethree-layout.kdl"

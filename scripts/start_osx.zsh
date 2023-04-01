@@ -163,6 +163,7 @@ if [ "x$FVM" = "x" ]; then
   TAPS+=("leoafarias/fvm")
   LIBS+=("fvm")
 fi
+# cloud(aws): cloudwatch logs
 SAW=$(echo $BREW_PKGS|grep saw)
 if [ "x$SAW" = "x" ]; then
   TAPS+=("TylerBrock/saw")
@@ -401,6 +402,7 @@ fi
 
 # Cloud
 #
+# aws-cli
 AWS=$(which aws)
 if [ "x$AWS" = "x" ]; then
   pip3 install awscli
@@ -411,6 +413,19 @@ if [ "x$AWS" = "x" ]; then
     unzip sessionmanager-bundle.zip
     sudo ./sessionmanager-bundle/install -i /usr/local/sessionmanagerplugin -b /usr/local/bin/session-manager-plugin
   fi
+fi
+
+# tfenv
+TFENV=$(which tfenv)
+if [ "x$TFENV" = "x" ]; then
+  brew install tfenv
+fi
+
+# terraform versions
+TERRAFORM_144=$(tfenv list|grep "1.4.4")
+if [ "x$TERRAFORM_144" = "x" ]; then
+  tfenv install 1.4.4
+  tfenv use 1.4.4
 fi
 
 # Profilers

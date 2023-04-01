@@ -326,6 +326,7 @@ fi
 
 # Cloud
 #
+# aws-cli
 AWS=$(which aws)
 if [[ "$AWS" =~ "not found" ]]; then
   curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
@@ -340,22 +341,21 @@ if [[ "$SAW" =~ "not found" ]]; then
   rm saw_0.2.2_linux_amd64.deb
 fi
 
-TERRAFORM=$(which terraform)
-if [[ "$TERRAFORM" =~ "not found" ]]; then
-  # GPG keys
-  wget -O- https://apt.releases.hashicorp.com/gpg | \
-  gpg --dearmor | \
-  sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg
-  # terraform key's fingerprint verification
-  gpg --no-default-keyring \
-  --keyring /usr/share/keyrings/hashicorp-archive-keyring.gpg \
-  --fingerprint
-  # Add the official HashiCorp repository to your system
-  echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] \
-  https://apt.releases.hashicorp.com $(lsb_release -cs) main" | \
-  sudo tee /etc/apt/sources.list.d/hashicorp.list
-  sudo apt update
-  sudo apt install -y terraform
+# tfenv
+TFENV_DIR=$HOME/.tfenv
+if [ ! -d "$TFENV_DIR" ]; then
+  git clone --depth=1 https://github.com/tfutils/tfenv.git $TFENV_DIR
+  if [ "x$TFENV_ROOT" = "x" ]; then
+    echo 'export TFENV_ROOT="$HOME/.tfenv"' >> ~/.zshrc
+    echo 'export PATH="$TFENV_ROOT/bin:$PATH"' >> ~/.zshrc
+  fi
+fi
+
+# terraform versions
+TERRAFORM_144=$(tfenv list|grep "1.4.4")
+if [ "x$TERRAFORM_144" = "x" ]; then
+  tfenv install 1.4.4
+  tfenv use 1.4.4
 fi
 
 # Profilers

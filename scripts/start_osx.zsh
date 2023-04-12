@@ -169,6 +169,10 @@ if [ "x$SAW" = "x" ]; then
   TAPS+=("TylerBrock/saw")
   LIBS+=("saw")
 fi
+SSO=$(echo $BREW_PKGS|grep aws-sso-cli)
+if [ "x$SSO" = "x" ]; then
+  LIBS+=("aws-sso-cli")
+fi
 TERRAFORM=$(echo $BREW_PKGS|grep terraform)
 if [ "x$TERRAFORM" = "x" ]; then
   TAPS+=("hashicorp/tap")

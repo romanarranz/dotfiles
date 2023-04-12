@@ -415,6 +415,13 @@ if [ "x$AWS" = "x" ]; then
   fi
 fi
 
+AWS2=$(which /usr/local/bin/aws)
+if [ "x$AWS2" = "x" ]; then
+  curl "https://awscli.amazonaws.com/AWSCLIV2.pkg" -o "AWSCLIV2.pkg"
+  sudo installer -pkg AWSCLIV2.pkg -target /
+  alias aws2=/usr/local/bin/aws
+fi
+
 # tfenv
 TFENV=$(which tfenv)
 if [ "x$TFENV" = "x" ]; then

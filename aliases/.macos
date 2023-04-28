@@ -55,3 +55,5 @@ alias ibrew='arch -x86_64 /usr/local/homebrew/bin/brew'
 alias uuid="echo $(uuidgen|awk '{print tolower($0)}')"
 
 alias aws2=/usr/local/bin/aws
+
+alias mkpasswd='docker run --rm -ti alpine:latest mkpasswd'

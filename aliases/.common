@@ -76,3 +76,6 @@ alias glg="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset 
 
 # zellij
 alias zj="zellij --layout ~/.zsh-config/config/zellij__onethree-layout.kdl"
+
+# terraform
+alias tf="terraform"

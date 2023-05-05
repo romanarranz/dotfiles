@@ -129,6 +129,8 @@ ZOXIDE=$(echo $BREW_PKGS|grep zoxide)
 if [ "x$ZOXIDE" = "x" ]; then LIBS+=("zoxide") fi
 GRAPHVIZ=$(echo $BREW_PKGS|grep graphviz)
 if [ "x$GRAPHVIZ" = "x" ]; then LIBS+=("graphviz") fi
+CHROME_EXPORT=$(echo $BREW_PKGS|grep chrome-export)
+if [ "x$CHROME_EXPORT" = "x" ]; then LIBS+=("chrome-export") fi
 P7Z=$(echo $BREW_PKGS|grep p7zip)
 if [ "x$P7Z" = "x" ]; then LIBS+=("p7zip") fi
 NMAP=$(echo $BREW_PKGS|grep nmap)

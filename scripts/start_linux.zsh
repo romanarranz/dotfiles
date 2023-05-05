@@ -88,6 +88,12 @@ if [[ "$BREW" =~ "not found" ]]; then
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
+# Just
+JUST=$(which just)
+if [[ "$JUST" =~ "not found" ]]; then
+  curl --proto '=https' --tlsv1.2 -sSf https://just.systems/install.sh | sudo bash -s -- --to /usr/local/bin
+fi
+
 # ohmyzsh
 if [ ! -d ~/.oh-my-zsh ]; then
   /bin/sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"

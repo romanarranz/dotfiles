@@ -347,6 +347,12 @@ if [[ "$SAW" =~ "not found" ]]; then
   rm saw_0.2.2_linux_amd64.deb
 fi
 
+AWS_SSO=$(which aws-sso)
+if [[ "$AWS_SSO" =~ "not found" ]]; then
+  wget https://github.com/synfinatic/aws-sso-cli/releases/download/v1.9.10/aws-sso-cli_1.9.10-1_amd64.deb
+  sudo dpkg -i aws-sso-cli_1.9.10-1_amd64.deb
+fi
+
 # tfenv
 TFENV_DIR=$HOME/.tfenv
 if [ ! -d "$TFENV_DIR" ]; then

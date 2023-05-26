@@ -56,6 +56,8 @@ AWSCURL=$(echo $BREW_PKGS|grep awscurl)
 if [ "x$AWSCURL" = "x" ]; then LIBS+=("awscurl") fi
 FD=$(echo $BREW_PKGS|grep fd)
 if [ "x$FD" = "x" ]; then LIBS+=("fd") fi
+REMIND=$(echo $BREW_PKGS|grep remind)
+if [ "x$REMIND" = "x" ]; then LIBS+=("remind") fi
 FFMPEG=$(echo $BREW_PKGS|grep ffmpeg)
 if [ "x$FFMPEG" = "x" ]; then LIBS+=("ffmpeg") fi
 JQ=$(echo $BREW_PKGS|grep jq)

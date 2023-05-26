@@ -37,6 +37,7 @@ obs-studio \
 protobuf-compiler \
 p7zip-full \
 p7zip-rar \
+remind \
 scrub \
 snapd \
 software-properties-common \

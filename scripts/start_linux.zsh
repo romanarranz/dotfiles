@@ -52,6 +52,7 @@ zsh
 # Create user dirs
 mkdir -p $HOME/bin
 mkdir -p $HOME/.local
+mkdir -p $HOME/.reminders
 mkdir -p $HOME/.local/share/fonts
 
 # Download fonts

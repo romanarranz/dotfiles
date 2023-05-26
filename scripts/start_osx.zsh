@@ -7,6 +7,7 @@ if [ "x$SYSTEM" = "xDarwin" ] && [ "$ARCH" = "arm" ]; then
 fi
 
 mkdir -p $HOME/bin
+mkdir -p $HOME/.reminders
 mkdir -p $HOME/.local
 
 # Brew System Package manager

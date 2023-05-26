@@ -1,0 +1,4 @@
+# file ~/.reminders/reminders.rem
+# https://man.archlinux.org/man/remind.1
+REM Mon Tue Wed Thu Fri Sat Sun MSG Update system dependencies
+REM Fri MSG Perform backups

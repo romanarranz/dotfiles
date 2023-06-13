@@ -57,3 +57,6 @@ alias uuid="echo $(uuidgen|awk '{print tolower($0)}')"
 alias aws2=/usr/local/bin/aws
 
 alias mkpasswd='docker run --rm -ti alpine:latest mkpasswd'
+
+# Launchpad icon delete, notice the $1 must be the app name with sensitive casing
+alias launchpaddel='sqlite3 $(find /private/var/folders \( -name com.apple.dock.launchpad -a -user $USER \) 2> /dev/null)/db/db "DELETE FROM apps WHERE title='$1';" && killall Dock'

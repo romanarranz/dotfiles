@@ -74,6 +74,8 @@ if [ "x$HEROKU" = "x" ]; then
 fi
 OPENSSL=$(echo $BREW_PKGS|grep openssl)
 if [ "x$OPENSSL" = "x" ]; then LIBS+=("openssl") fi
+EXIFTOOL=$(echo $BREW_PKGS|grep exiftool)
+if [ "x$EXIFTOOL" = "x" ]; then LIBS+=("exiftool") fi
 NCDU=$(echo $BREW_PKGS|grep ncdu)
 if [ "x$NCDU" = "x" ]; then LIBS+=("ncdu") fi
 PANDOC=$(echo $BREW_PKGS|grep pandoc)

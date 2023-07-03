@@ -446,6 +446,18 @@ if [ "x$TERRAFORM_144" = "x" ]; then
   tfenv use 1.4.4
 fi
 
+# Logs
+#
+LNAV=$(which lnav)
+if [[ "$LNAV" =~ "not found" ]]; then
+  wget "https://github.com/tstack/lnav/releases/download/v0.11.2/lnav-0.11.2-x86_64-linux-musl.zip" -O /tmp/lnav.zip
+  pushd /tmp
+  unzip lnav.zip
+  cd lnav-0.11.2
+  sudo mv lnav /usr/local/bin/
+  popd
+fi
+
 # Profilers
 #
 CGMEMTIME=$(which cgmemtime)

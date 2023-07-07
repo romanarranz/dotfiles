@@ -2,7 +2,7 @@
 
 if [[ "x$SYSTEM" = "xLinux" ]]; then
     sudo apt update && sudo apt upgrade \
-    && brew update; brew upgrade; brew cu -ay; brew cleanup \
+    && brew update; brew upgrade; brew cleanup \
     && pip install --upgrade pip setuptools wheel \
     && rustup update
 
@@ -11,6 +11,6 @@ if [[ "x$SYSTEM" = "xLinux" ]]; then
         snap refresh
     fi
 else
-    brew update; brew upgrade; brew cu -ay; brew cleanup \
+    brew update; brew upgrade; brew cleanup \
     && pip install --upgrade pip setuptools wheel
 fi

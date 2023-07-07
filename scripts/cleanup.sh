@@ -1,6 +1,7 @@
 #!/bin/bash
-# Removes old revisions of snaps
-# CLOSE ALL SNAPS BEFORE RUNNING THIS
+
+# https://www.golinuxcloud.com/remove-unused-packages-ubuntu/
+
 set -eu
 
 if [[ "x$SYSTEM" = "xLinux" ]]; then

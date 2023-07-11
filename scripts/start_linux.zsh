@@ -5,17 +5,19 @@ DISTRO="ubuntu"
 
 # System packages
 #
-sudo add-apt-repository universe ppa:obsproject/obs-studio
-sudo add-apt-repository ppa:apandada1/xournalpp-stable
+sudo add-apt-repository -y universe ppa:obsproject/obs-studio
+sudo add-apt-repository -y ppa:apandada1/xournalpp-stable
 sudo apt update -y \
 && sudo apt install -y \
 autoconf \
+bc \
 bison \
 build-essential \
 ca-certificates \
 curl \
 cmake \
 coreutils \
+dnsutils \
 ffmpeg \
 git \
 gnome-screensaver \
@@ -85,7 +87,7 @@ fi
 #
 # Install brew
 BREW=$(which brew)
-if [[ "$BREW" =~ "not found" ]]; then
+if [[ "$BREW" =~ "not found" ]] && [ ! -d /home/linuxbrew/.linuxbrew ]; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
@@ -158,6 +160,14 @@ fi
 PICK=$(which pick-colour-picker)
 if [[ "$PICK" =~ "not found" ]]; then
   sudo snap install pick-colour-picker
+fi
+
+# DNS
+if [ ! -f /usr/local/bin/dnstest ]; then
+  pushd /tmp
+  git clone --depth=1 https://github.com/cleanbrowsing/dnsperftest/ /tmp/dnsperftest/
+  sudo mv dnstest.sh /usr/local/bin/dnstest
+  popd
 fi
 
 # Node

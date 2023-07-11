@@ -57,6 +57,10 @@ AWSCURL=$(echo $BREW_PKGS|grep awscurl)
 if [ "x$AWSCURL" = "x" ]; then LIBS+=("awscurl") fi
 FD=$(echo $BREW_PKGS|grep fd)
 if [ "x$FD" = "x" ]; then LIBS+=("fd") fi
+BC=$(echo $BREW_PKGS|grep bc)
+if [ "x$BC" = "x" ]; then LIBS+=("bc") fi
+BIND=$(echo $BREW_PKGS|grep bind)
+if [ "x$BIND" = "x" ]; then LIBS+=("bind") fi
 REMIND=$(echo $BREW_PKGS|grep remind)
 if [ "x$REMIND" = "x" ]; then LIBS+=("remind") fi
 FFMPEG=$(echo $BREW_PKGS|grep ffmpeg)
@@ -204,6 +208,14 @@ FZF=$HOME/.fzf
 if [ ! -d  "$FZF" ]; then
   git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
   ~/.fzf/install
+fi
+
+# DNS
+if [ ! -f /usr/local/bin/dnstest ]; then
+  pushd /tmp
+  git clone --depth=1 https://github.com/cleanbrowsing/dnsperftest/ /tmp/dnsperftest/
+  sudo mv dnstest.sh /usr/local/bin/dnstest
+  popd
 fi
 
 # Symlinks

@@ -23,3 +23,6 @@ alias afk='gnome-screensaver-command -l'
 
 # Pick color
 alias colorp='pick-colour-picker'
+
+# helpers
+alias uuid='uuidgen'

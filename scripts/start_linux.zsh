@@ -45,6 +45,7 @@ snapd \
 software-properties-common \
 vlc \
 wget \
+wireguard \
 whois \
 xclip \
 zlib1g-dev \

@@ -189,6 +189,10 @@ if [ "x$TERRAFORM" = "x" ]; then
   TAPS+=("hashicorp/tap")
   LIBS+=("hashicorp/tap/terraform")
 fi
+WIREGUARD=$(echo $BREW_PKGS|grep wireguard-tools)
+if [ "x$WIREGUARD" = "x" ]; then
+  LIBS+=("wireguard-tools")
+fi
 
 if [ ${#TAPS[@]} -gt 0 ]; then
   brew tap $TAPS

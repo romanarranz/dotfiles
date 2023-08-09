@@ -167,7 +167,7 @@ fi
 if [ ! -f /usr/local/bin/dnstest ]; then
   pushd /tmp
   git clone --depth=1 https://github.com/cleanbrowsing/dnsperftest/ /tmp/dnsperftest/
-  sudo mv dnstest.sh /usr/local/bin/dnstest
+  sudo mv /tmp/dnsperftest/dnstest.sh /usr/local/bin/dnstest
   popd
 fi
 
@@ -335,6 +335,14 @@ KUBETAIL=$(which kubetail)
 if [[ "$KUBETAIL" =~ "not found" ]]; then
   sudo wget https://raw.githubusercontent.com/johanhaleby/kubetail/master/kubetail -O /usr/local/bin/kubetail
   sudo chmod 755 /usr/local/bin/kubetail
+fi
+
+KUBESEAL=$(which kubeseal)
+if [[ "$KUBESEAL" =~ "not found" ]]; then
+  KUBESEAL_VERSION='0.23.0'
+  wget "https://github.com/bitnami-labs/sealed-secrets/releases/download/v${KUBESEAL_VERSION:?}/kubeseal-${KUBESEAL_VERSION:?}-linux-amd64.tar.gz"
+  tar -xvzf kubeseal-${KUBESEAL_VERSION:?}-linux-amd64.tar.gz kubeseal
+  sudo install -m 755 kubeseal /usr/local/bin/kubeseal
 fi
 
 # helm package manager for k8s

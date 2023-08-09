@@ -193,6 +193,10 @@ WIREGUARD=$(echo $BREW_PKGS|grep wireguard-tools)
 if [ "x$WIREGUARD" = "x" ]; then
   LIBS+=("wireguard-tools")
 fi
+KUBESEAL=$(echo $BREW_PKGS|grep kubeseal)
+if [ "x$KUBESEAL" = "x" ]; then
+  LIBS+=("kubeseal")
+fi
 
 if [ ${#TAPS[@]} -gt 0 ]; then
   brew tap $TAPS
@@ -215,10 +219,11 @@ if [ ! -d  "$FZF" ]; then
 fi
 
 # DNS
-if [ ! -f /usr/local/bin/dnstest ]; then
+if [ ! -f "/usr/local/bin/dnstest" ]; then
   pushd /tmp
+  if [ -d "/tmp/dnsperftest/" ]; then rm -rf /tmp/dnsperftest; fi
   git clone --depth=1 https://github.com/cleanbrowsing/dnsperftest/ /tmp/dnsperftest/
-  sudo mv dnstest.sh /usr/local/bin/dnstest
+  sudo mv /tmp/dnsperftest/dnstest.sh /usr/local/bin/dnstest
   popd
 fi
 

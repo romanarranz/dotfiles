@@ -340,9 +340,11 @@ fi
 KUBESEAL=$(which kubeseal)
 if [[ "$KUBESEAL" =~ "not found" ]]; then
   KUBESEAL_VERSION='0.23.0'
+  pushd /tmp
   wget "https://github.com/bitnami-labs/sealed-secrets/releases/download/v${KUBESEAL_VERSION:?}/kubeseal-${KUBESEAL_VERSION:?}-linux-amd64.tar.gz"
   tar -xvzf kubeseal-${KUBESEAL_VERSION:?}-linux-amd64.tar.gz kubeseal
   sudo install -m 755 kubeseal /usr/local/bin/kubeseal
+  popd
 fi
 
 # helm package manager for k8s

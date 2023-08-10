@@ -197,6 +197,10 @@ KUBESEAL=$(echo $BREW_PKGS|grep kubeseal)
 if [ "x$KUBESEAL" = "x" ]; then
   LIBS+=("kubeseal")
 fi
+SHELLCHECK=$(echo $BREW_PKGS|grep shellcheck)
+if [ "x$SHELLCHECK" = "x" ]; then
+  LIBS+=("shellcheck")
+fi
 
 if [ ${#TAPS[@]} -gt 0 ]; then
   brew tap $TAPS

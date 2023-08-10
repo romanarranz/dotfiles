@@ -16,6 +16,7 @@ build-essential \
 ca-certificates \
 curl \
 cmake \
+copyq \
 coreutils \
 dnsutils \
 ffmpeg \
@@ -42,6 +43,7 @@ p7zip-rar \
 remind \
 scrub \
 snapd \
+shellcheck \
 software-properties-common \
 vlc \
 wget \

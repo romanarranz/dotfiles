@@ -349,6 +349,13 @@ if [[ "$KUBESEAL" =~ "not found" ]]; then
   popd
 fi
 
+K8SLENS=$(which lens-desktop)
+if [[ "$K8SLENS" =~ "not found" ]]; then
+  curl -fsSL https://downloads.k8slens.dev/keys/gpg | gpg --dearmor | sudo tee /usr/share/keyrings/lens-archive-keyring.gpg > /dev/null
+  echo "deb [arch=amd64 signed-by=/usr/share/keyrings/lens-archive-keyring.gpg] https://downloads.k8slens.dev/apt/debian stable main" | sudo tee /etc/apt/sources.list.d/lens.list > /dev/null
+  sudo apt update && sudo apt install -y lens
+fi
+
 # helm package manager for k8s
 HELM=$(which helm)
 if [[ "$HELM" =~ "not found" ]]; then

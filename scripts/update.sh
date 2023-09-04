@@ -14,3 +14,10 @@ else
     brew update; brew upgrade; brew cleanup \
     && pip install --upgrade pip setuptools wheel
 fi
+
+# Update pyenv
+if [ -d $HOME/.pyenv ]; then
+    pushd $(pyenv root)
+    git pull
+    popd
+fi

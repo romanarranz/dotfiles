@@ -21,3 +21,8 @@ if [ -d $HOME/.pyenv ]; then
     git pull
     popd
 fi
+
+# Update nvm
+if [ -d $HOME/.nvm ]; then
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
+fi

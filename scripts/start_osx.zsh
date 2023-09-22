@@ -201,6 +201,10 @@ SHELLCHECK=$(echo $BREW_PKGS|grep shellcheck)
 if [ "x$SHELLCHECK" = "x" ]; then
   LIBS+=("shellcheck")
 fi
+HTTRACK=$(echo $BREW_PKGS|grep httrack)
+if [ "x$HTTRACK" = "x" ]; then
+  LIBS+=("httrack")
+fi
 
 if [ ${#TAPS[@]} -gt 0 ]; then
   brew tap $TAPS

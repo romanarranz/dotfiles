@@ -232,6 +232,8 @@ source $HOME/.zshrc
 RUBY312=$(rbenv versions|grep 3.1.2)
 if [ "x$RUBY312" = "x" ]; then
   rbenv install 3.1.2
+  rbenv global 3.1.2
+  rbenv rehash
 fi
 
 # Python

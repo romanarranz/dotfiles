@@ -205,6 +205,10 @@ HTTRACK=$(echo $BREW_PKGS|grep httrack)
 if [ "x$HTTRACK" = "x" ]; then
   LIBS+=("httrack")
 fi
+LEDGER=$(echo $BREW_PKGS|grep ledger)
+if [ "x$LEDGER" = "x" ]; then
+  LIBS+=("ledger")
+fi
 
 if [ ${#TAPS[@]} -gt 0 ]; then
   brew tap $TAPS

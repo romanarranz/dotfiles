@@ -34,6 +34,7 @@ libssl-dev \
 libyaml-dev \
 libreadline-dev \
 lsb-release \
+ledger \
 ncdu \
 nmap \
 obs-studio \

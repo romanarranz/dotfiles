@@ -346,6 +346,13 @@ if [ "x$PYTHON39" = "x" ]; then
   pyenv install 3.9.4
 fi
 
+# Virtualenv
+#
+VIRTUALENV=$(which virtualenv)
+if [[ "$VIRTUALENV" =~ "not found" ]]; then
+  pip install virtualenv
+fi
+
 # Poetry
 #
 POETRY=$(which poetry)

@@ -429,6 +429,14 @@ if [[ "$CGMEMTIME" =~ "not found" ]]; then
   popd
 fi
 
+# HTTP clients
+#
+INSOMNIA=$(which insomnia)
+if [[ "$INSOMNIA" =~ "not found" ]]; then
+  wget https://github.com/Kong/insomnia/releases/download/core%402023.4.0/Insomnia.Core-2023.2.0.deb
+  sudo dpkg -i Insomnia.Core-2023.2.0.deb
+fi
+
 # Scrapers
 #
 WHATWEB=$(which whatweb)

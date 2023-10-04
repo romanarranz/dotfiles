@@ -332,10 +332,6 @@ PYTHON27=$(pyenv versions|grep 2.7)
 if [ "x$PYTHON27" = "x" ]; then
   pyenv install 2.7.18
 fi
-PYTHON37=$(pyenv versions|grep 3.7)
-if [ "x$PYTHON37" = "x" ]; then
-  pyenv install 3.7.10
-fi
 PYTHON38=$(pyenv versions|grep 3.8)
 if [ "x$PYTHON38" = "x" ] && [ $APPLE_CHIP = "silicon" ]; then
   # https://github.com/pyenv/pyenv/issues/1768#issuecomment-753756051
@@ -344,6 +340,14 @@ fi
 PYTHON39=$(pyenv versions|grep 3.9)
 if [ "x$PYTHON39" = "x" ]; then
   pyenv install 3.9.4
+fi
+PYTHON310=$(pyenv versions|grep 3.10)
+if [ "x$PYTHON310" = "x" ]; then
+  pyenv install 3.10
+fi
+PYTHON=$(python --version)
+if [[ "$PYTHON" =~ "not found" ]]; then
+  pyenv global 3.10
 fi
 
 # Virtualenv
@@ -357,7 +361,7 @@ fi
 #
 POETRY=$(which poetry)
 if [ "x$POETRY" = "x" ]; then
-  curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
+  curl -sSL https://install.python-poetry.org | python3 -
   source $HOME/.zshrc
   poetry config virtualenvs.in-project true
 fi

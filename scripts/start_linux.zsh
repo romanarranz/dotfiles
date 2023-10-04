@@ -264,9 +264,13 @@ PYTHON39=$(pyenv versions|grep 3.9)
 if [ "x$PYTHON39" = "x" ]; then
   pyenv install 3.9.4
 fi
+PYTHON310=$(pyenv versions|grep 3.10)
+if [ "x$PYTHON310" = "x" ]; then
+  pyenv install 3.10
+fi
 PYTHON=$(python --version)
 if [[ "$PYTHON" =~ "not found" ]]; then
-  pyenv global 3.9.4
+  pyenv global 3.10
 fi
 
 # Virtualenv
@@ -280,7 +284,7 @@ fi
 #
 POETRY=$(which poetry)
 if [[ "$POETRY" =~ "not found" ]]; then
-  curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
+  curl -sSL https://install.python-poetry.org | python3 -
   source $HOME/.zshrc
   poetry config virtualenvs.in-project true
 fi

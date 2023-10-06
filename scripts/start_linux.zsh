@@ -6,10 +6,13 @@ DISTRO="ubuntu"
 # System packages
 #
 sudo add-apt-repository -y universe ppa:obsproject/obs-studio
+sudo add-apt-repository -y ppa:umang/indicator-stickynotes
 sudo add-apt-repository -y ppa:apandada1/xournalpp-stable
 sudo apt update -y \
 && sudo apt install -y \
 autoconf \
+apt-transport-https \
+arping \
 bc \
 bison \
 build-essential \
@@ -20,39 +23,57 @@ copyq \
 coreutils \
 dnsutils \
 ffmpeg \
+gcc \
+g++ \
 git \
 gnome-screensaver \
 gnupg \
 graphviz \
 jq \
 htop \
+indicator-stickynotes \
 libreadline-dev \
 libncurses5-dev \
+libbz2-dev \
 libffi-dev \
 libgdbm-dev \
-libssl-dev \
-libyaml-dev \
+liblzma-dev \
 libreadline-dev \
+libssl-dev \
+libsqlite3-dev \
+libxml2-dev \
+libxmlsec1-dev \
+libyaml-dev \
+llvm \
 lsb-release \
 ledger \
+make \
 ncdu \
+net-tools \
 nmap \
 obs-studio \
+openssl \
 protobuf-compiler \
 p7zip-full \
 p7zip-rar \
+pandoc \
+poppler-utils \
 remind \
+ripgrep \
 scrub \
 snapd \
 shellcheck \
 software-properties-common \
+tk-dev \
 vlc \
 wget \
-wireguard \
 whois \
+wireguard \
+xclip \
 xclip \
 zlib1g-dev \
 xournalpp \
+xz-utils \
 zsh
 
 # Create user dirs
@@ -204,6 +225,10 @@ TLDR=$(which tldr)
 if [[ "$TLDR" =~ "not found" ]]; then
   # https://github.com/tldr-pages/tldr
   npm i -g tldr
+fi
+NCU=$(which ncu)
+if [[ "$NCU" =~ "not found" ]]; then
+  npm i -g npm-check-updates
 fi
 CDK_DIA=$(which cdk-dia)
 if [[ "$CDK_DIA" =~ "not found" ]]; then

@@ -38,6 +38,7 @@ libbz2-dev \
 libffi-dev \
 libgdbm-dev \
 liblzma-dev \
+libpoppler-cpp-dev \
 libreadline-dev \
 libssl-dev \
 libsqlite3-dev \

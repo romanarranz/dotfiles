@@ -167,6 +167,8 @@ AHA=$(echo $BREW_PKGS|grep aha)
 if [ "x$AHA" = "x" ]; then LIBS+=("aha") fi
 JUST=$(echo $BREW_PKGS|grep just)
 if [ "x$JUST" = "x" ]; then LIBS+=("just") fi
+BRUNO=$(echo $BREW_PKGS|grep bruno)
+if [ "x$BRUNO" = "x" ]; then LIBS+=("bruno") fi
 PROTOC=$(echo $BREW_PKGS|grep protobuf)
 if [ "x$PROTOC" = "x" ]; then LIBS+=("protobuf") fi
 FVM=$(echo $BREW_PKGS|grep fvm)

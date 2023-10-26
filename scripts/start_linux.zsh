@@ -457,10 +457,20 @@ fi
 
 # HTTP clients
 #
-INSOMNIA=$(which insomnia)
-if [[ "$INSOMNIA" =~ "not found" ]]; then
-  wget https://github.com/Kong/insomnia/releases/download/core%402023.4.0/Insomnia.Core-2023.2.0.deb
-  sudo dpkg -i Insomnia.Core-2023.2.0.deb
+# INSOMNIA=$(which insomnia)
+# if [[ "$INSOMNIA" =~ "not found" ]]; then
+#   wget https://github.com/Kong/insomnia/releases/download/core%402023.4.0/Insomnia.Core-2023.2.0.deb
+#   sudo dpkg -i Insomnia.Core-2023.2.0.deb
+# fi
+BRUNO=$(which bruno)
+if [[ "$BRUNO" =~ "not found" ]]; then
+  sudo mkdir -p /etc/apt/keyrings
+  sudo gpg --no-default-keyring --keyring /etc/apt/keyrings/bruno.gpg --keyserver keyserver.ubuntu.com --recv-keys 9FA6017ECABE0266
+
+  echo "deb [signed-by=/etc/apt/keyrings/bruno.gpg] http://debian.usebruno.com/ bruno stable" | sudo tee /etc/apt/sources.list.d/bruno.list 
+
+  sudo apt update
+  sudo apt install bruno
 fi
 
 # Scrapers

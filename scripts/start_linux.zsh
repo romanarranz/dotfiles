@@ -59,6 +59,9 @@ p7zip-full \
 p7zip-rar \
 pandoc \
 poppler-utils \
+python-is-python3 \
+python3 \
+python3-venv \
 remind \
 ripgrep \
 scrub \
@@ -206,12 +209,20 @@ fi
 
 NODE_VERSIONS=$(nvm ls --no-colors --no-alias)
 NODE14=$(echo $NODE_VERSIONS|grep v14)
-if [[ "x$NODE14" =~ "not found" ]]; then
+if [[ "x$NODE14" = "x" ]]; then
   nvm install 14
 fi
 NODE16=$(echo $NODE_VERSIONS|grep v16)
-if [[ "x$NODE16" =~ "not found" ]]; then
+if [[ "x$NODE16" = "x" ]]; then
   nvm install 16
+fi
+NODE18=$(echo $NODE_VERSIONS|grep v18)
+if [[ "x$NODE18" = "x" ]]; then
+  nvm install 18
+fi
+NODE20=$(echo $NODE_VERSIONS|grep v20)
+if [[ "x$NODE20" = "x" ]]; then
+  nvm install 20
 fi
 NODE=$(which npm)
 if [[ "$NODE" =~ "not found" ]]; then
@@ -407,9 +418,19 @@ fi
 # aws-cli
 AWS=$(which aws)
 if [[ "$AWS" =~ "not found" ]]; then
-  curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+  curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "/tmp/awscliv2.zip"
+  pushd /tmp
   unzip awscliv2.zip
-  sudo ./aws/install -i /usr/local/aws-cli -b /usr/local/bin
+  sudo ./aws/install -i /usr/local/aws2 -b /usr/local/bin
+  popd
+fi
+AWS1=$(which aws1)
+if [[ "$AWS1" =~ "not found" ]]; then
+  curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "/tmp/awscli-bundle.zip"
+  pushd /tmp
+  unzip awscli-bundle.zip
+  sudo ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws1
+  popd
 fi
 
 SAW=$(which saw)

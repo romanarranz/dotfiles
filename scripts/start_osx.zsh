@@ -363,7 +363,7 @@ fi
 #
 POETRY=$(which poetry)
 if [ "x$POETRY" = "x" ]; then
-  curl -sSL https://install.python-poetry.org | python3 -
+  curl -sSL https://install.python-poetry.org | POETRY_HOME=$HOME/.poetry python3 -
   source $HOME/.zshrc
   poetry config virtualenvs.in-project true
 fi

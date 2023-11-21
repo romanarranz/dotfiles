@@ -324,6 +324,7 @@ if [[ "$POETRY" =~ "not found" ]]; then
   curl -sSL https://install.python-poetry.org | python3 -
   source $HOME/.zshrc
   poetry config virtualenvs.in-project true
+  pip install poetry-plugin-export
 fi
 
 # Rust

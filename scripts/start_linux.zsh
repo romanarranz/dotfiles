@@ -327,6 +327,11 @@ if [[ "$POETRY" =~ "not found" ]]; then
   pip install poetry-plugin-export
 fi
 
+CSVKIT=$(which csvkit)
+if [[ "$CSVKIT" =~ "not found" ]]; then
+  pip install csvkit
+fi
+
 # Rust
 #
 RUSTUP=$(which rustup)

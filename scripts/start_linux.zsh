@@ -51,6 +51,7 @@ ledger \
 make \
 ncdu \
 net-tools \
+nfs-common \
 nmap \
 obs-studio \
 openssl \
@@ -498,6 +499,14 @@ if [[ "$BRUNO" =~ "not found" ]]; then
 
   sudo apt update
   sudo apt install bruno
+fi
+
+# Remote Desktop
+#
+RUSTDESK=$(which rustdesk)
+if [[ "$RUSTDESK" =~ "not found" ]]; then
+  wget https://github.com/rustdesk/rustdesk/releases/download/1.2.3/rustdesk-1.2.3-x86_64.deb -O /tmp/rustdesk-1.2.3-x86_64.deb
+  sudo apt install -fy /tmp/rustdesk-1.2.3-x86_64.deb
 fi
 
 # Scrapers

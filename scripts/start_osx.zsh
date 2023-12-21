@@ -96,6 +96,8 @@ RGA=$(echo $BREW_PKGS|grep ripgrep-all)
 if [ "x$RGA" = "x" ]; then LIBS+=("rga") fi
 SQLITE=$(echo $BREW_PKGS|grep sqlite)
 if [ "x$SQLITE" = "x" ]; then LIBS+=("sqlite3") fi
+POSTGRES=$(echo $BREW_PKGS|grep postgres)
+if [ "x$POSTGRES" = "x" ]; then LIBS+=("postgres") fi
 TESSERACT=$(echo $BREW_PKGS|grep tesseract)
 if [ "x$TESSERACT" = "x" ]; then LIBS+=("tesseract") fi
 TREE=$(echo $BREW_PKGS|grep tree)

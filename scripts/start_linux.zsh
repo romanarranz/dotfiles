@@ -300,7 +300,7 @@ if [ "x$PYTHON27" = "x" ]; then
 fi
 PYTHON39=$(pyenv versions|grep 3.9)
 if [ "x$PYTHON39" = "x" ]; then
-  pyenv install 3.9.4
+  pyenv install 3.9.18
 fi
 PYTHON310=$(pyenv versions|grep 3.10)
 if [ "x$PYTHON310" = "x" ]; then
@@ -308,7 +308,7 @@ if [ "x$PYTHON310" = "x" ]; then
 fi
 PYTHON=$(python --version)
 if [[ "$PYTHON" =~ "not found" ]]; then
-  pyenv global 3.10
+  pyenv global 3.9.18
 fi
 
 # Virtualenv

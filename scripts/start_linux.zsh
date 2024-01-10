@@ -458,6 +458,20 @@ if [[ "$AWS_SSO" =~ "not found" ]]; then
   sudo dpkg -i aws-sso-cli_1.9.10-1_amd64.deb
 fi
 
+# gcloud
+GCLOUD=$(which gcloud)
+if [[ "$GCLOUD" =~ "not found" ]]; then
+  wget "https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-458.0.0-darwin-arm.tar.gz" -O /tmp/gcloud.tar.gz
+  pushd /tmp
+  tar xvzf gcloud.tar.gz -C ~/.local
+  chmod -R 754 ~/.local/google-cloud-sdk
+  chown -R $USER ~/.local/google-cloud-sdk
+  pushd ~/.local/google-cloud-sdk
+  ./install.sh
+  popd
+  popd
+fi
+
 # tfenv
 TFENV_DIR=$HOME/.tfenv
 if [ ! -d "$TFENV_DIR" ]; then

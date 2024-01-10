@@ -376,6 +376,11 @@ if [[ "$CSVKIT" =~ "not found" ]]; then
   pip install csvkit
 fi
 
+ANSIBLE=$(which ansible)
+if [[ "$ANSIBLE" =~ "not found" ]]; then
+  python3 -m pip install --user ansible
+fi
+
 # Fonts
 #
 FIRACODE=$(echo $BREW_PKGS|grep font-fira-code)

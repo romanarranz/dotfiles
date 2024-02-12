@@ -116,6 +116,8 @@ RECTANGLE=$(echo $BREW_PKGS|grep rectangle)
 if [ "x$RECTANGLE" = "x" ]; then CASKS+=("rectangle") fi
 KEYCASTR=$(echo $BREW_PKGS|grep keycastr)
 if [ "x$KEYCASTR" = "x" ]; then CASKS+=("keycastr") fi
+COCOAPODS=$(echo $BREW_PKGS|grep cocoapods)
+if [ "x$COCOAPODS" = "x" ]; then LIBS+=("cocoapods") fi
 # https://github.com/ibraheemdev/modern-unix
 DUST=$(echo $BREW_PKGS|grep dust)
 if [ "x$DUST" = "x" ]; then LIBS+=("dust") fi

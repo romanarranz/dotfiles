@@ -155,6 +155,3 @@ eval "$(zoxide init zsh)"
 
 # Customize prompt
 source ${ZSHCONFIG}/.prompt
-
-# Display reminders
-rem -n

@@ -144,6 +144,10 @@ if [[ "x$SYSTEM" = "xLinux" ]]; then
   export PATH="$HOME/.local/bin:$PATH"
 fi
 
+# GCP
+if [ -f '~/.local/google-cloud-sdk/path.zsh.inc' ]; then source ~/.local/google-cloud-sdk/path.zsh.inc; fi
+if [ -f '~/.local/google-cloud-sdk/completion.zsh.inc' ]; then source ~/.local/google-cloud-sdk/completion.zsh.inc; fi
+
 # To reconfigure p10k run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 

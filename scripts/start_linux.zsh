@@ -170,6 +170,11 @@ if [[ "x$EXA" = "x" ]]; then LIBS+=("exa") fi
 # https://github.com/dandavison/delta
 GIT_DELTA=$(echo $BREW_PKGS|grep git-delta)
 if [[ "x$GIT_DELTA" = "x" ]]; then LIBS+=("git-delta") fi
+FVM=$(echo $BREW_PKGS|grep fvm)
+if [ "x$FVM" = "x" ]; then
+  TAPS+=("leoafarias/fvm")
+  LIBS+=("fvm")
+fi
 
 if [ ${#TAPS[@]} -gt 0 ]; then
   brew tap $TAPS

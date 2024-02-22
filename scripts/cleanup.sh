@@ -22,6 +22,15 @@ if [[ "x$SYSTEM" = "xLinux" ]]; then
     if [ -d "~/.cache/Cypress" ]; then
         rm -r ~/.cache/Cypress/*
     fi
+    if [ -d "~/.gradle/caches/" ]; then
+        rm -r ~/.gradle/caches/*
+    fi
+    npm cache clean
+    cargo cache -a
+    cd ~
+    delnodemodules
+    delvenvs
+    delterraform
 
     # rotate logs
     sudo logrotate -vf /etc/logrotate.conf

@@ -351,9 +351,13 @@ PYTHON310=$(pyenv versions|grep 3.10)
 if [ "x$PYTHON310" = "x" ]; then
   pyenv install 3.10
 fi
+PYTHON311=$(pyenv versions|grep 3.11)
+if [ "x$PYTHON311" = "x" ]; then
+  pyenv install 3.11
+fi
 PYTHON=$(python --version)
 if [[ "$PYTHON" =~ "not found" ]]; then
-  pyenv global 3.9.18
+  pyenv global 3.11
 fi
 
 # Virtualenv

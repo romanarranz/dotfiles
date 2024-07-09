@@ -114,6 +114,8 @@ ZLIB=$(echo $BREW_PKGS|grep zlib)
 if [ "x$ZLIB" = "x" ]; then LIBS+=("zlib") fi
 RECTANGLE=$(echo $BREW_PKGS|grep rectangle)
 if [ "x$RECTANGLE" = "x" ]; then CASKS+=("rectangle") fi
+BASICTEX=$(echo $BREW_PKGS|grep basictex)
+if [ "x$BASICTEX" = "x" ]; then CASKS+=("basictex") fi
 KEYCASTR=$(echo $BREW_PKGS|grep keycastr)
 if [ "x$KEYCASTR" = "x" ]; then CASKS+=("keycastr") fi
 COCOAPODS=$(echo $BREW_PKGS|grep cocoapods)

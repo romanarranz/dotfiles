@@ -144,6 +144,11 @@ if [[ "x$SYSTEM" = "xLinux" ]]; then
   export PATH="$HOME/.local/bin:$PATH"
 fi
 
+# BasicTeX
+if [ -d /Library/TeX ]; then
+  export PATH="/Library/TeX/texbin:$PATH"
+fi
+
 # GCP
 if [ -f '~/.local/google-cloud-sdk/path.zsh.inc' ]; then source ~/.local/google-cloud-sdk/path.zsh.inc; fi
 if [ -f '~/.local/google-cloud-sdk/completion.zsh.inc' ]; then source ~/.local/google-cloud-sdk/completion.zsh.inc; fi

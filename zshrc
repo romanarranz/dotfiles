@@ -139,6 +139,9 @@ if [ -d $HOME/.sdkman ]; then
     source "$HOME/.sdkman/bin/sdkman-init.sh"
 fi
 
+# Terraform
+export PATH="$HOME/.tfenv/bin:$PATH"
+
 # AWS
 if [[ "x$SYSTEM" = "xLinux" ]]; then
   export PATH="$HOME/.local/bin:$PATH"

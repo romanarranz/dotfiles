@@ -482,6 +482,12 @@ if [[ "$GCLOUD" =~ "not found" ]]; then
   popd
 fi
 
+# azure
+AZURE=$(which az)
+if [[ "$AZURE" =~ "not found" ]]; then
+  curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+fi
+
 # tfenv
 TFENV_DIR=$HOME/.tfenv
 if [ ! -d "$TFENV_DIR" ]; then

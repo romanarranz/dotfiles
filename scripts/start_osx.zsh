@@ -158,6 +158,8 @@ WATCH=$(echo $BREW_PKGS|grep watch)
 if [ "x$WATCH" = "x" ]; then LIBS+=("watch") fi
 COREUTILS=$(echo $BREW_PKGS|grep coreutils)
 if [ "x$COREUTILS" = "x" ]; then LIBS+=("coreutils") fi
+AZURE=$(echo $BREW_PKGS|grep azure-cli)
+if [ "x$AZURE" = "x" ]; then LIBS+=("azure-cli") fi
 # Updated version of bash
 BASH=$(echo $BREW_PKGS|grep bash)
 if [ "x$BASH" = "x" ]; then LIBS+=("bash") fi

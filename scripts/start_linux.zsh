@@ -206,6 +206,16 @@ if [ ! -f /usr/local/bin/dnstest ]; then
   popd
 fi
 
+# Go
+#
+# TODO: gvm https://github.com/moovweb/gvm
+
+JIRA=$(which jira)
+if [[ "$JIRA" =~ "not found" ]]; then
+  # https://github.com/ankitpokhrel/jira-cli
+  go install github.com/ankitpokhrel/jira-cli/cmd/jira@latest
+fi
+
 # Node
 #
 # nvm

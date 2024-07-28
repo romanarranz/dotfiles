@@ -199,6 +199,11 @@ if [ "x$TERRAFORM" = "x" ]; then
   TAPS+=("hashicorp/tap")
   LIBS+=("hashicorp/tap/terraform")
 fi
+JIRA=$(echo $BREW_PKGS|grep jira-cli)
+if [ "x$JIRA" = "x" ]; then
+  TAPS+=("ankitpokhrel/jira-cli")
+  LIBS+=("jira-cli")
+fi
 WIREGUARD=$(echo $BREW_PKGS|grep wireguard-tools)
 if [ "x$WIREGUARD" = "x" ]; then
   LIBS+=("wireguard-tools")

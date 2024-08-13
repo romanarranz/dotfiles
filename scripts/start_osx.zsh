@@ -179,6 +179,8 @@ BRUNO=$(echo $BREW_PKGS|grep bruno)
 if [ "x$BRUNO" = "x" ]; then LIBS+=("bruno") fi
 PROTOC=$(echo $BREW_PKGS|grep protobuf)
 if [ "x$PROTOC" = "x" ]; then LIBS+=("protobuf") fi
+TELNET=$(echo $BREW_PKGS|grep telnet)
+if [ "x$TELNET" = "x" ]; then LIBS+=("telnet") fi
 FVM=$(echo $BREW_PKGS|grep fvm)
 if [ "x$FVM" = "x" ]; then
   TAPS+=("leoafarias/fvm")

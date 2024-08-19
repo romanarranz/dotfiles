@@ -116,6 +116,8 @@ RECTANGLE=$(echo $BREW_PKGS|grep rectangle)
 if [ "x$RECTANGLE" = "x" ]; then CASKS+=("rectangle") fi
 BASICTEX=$(echo $BREW_PKGS|grep basictex)
 if [ "x$BASICTEX" = "x" ]; then CASKS+=("basictex") fi
+EZA=$(echo $BREW_PKGS|grep eza)
+if [[ "x$EZA" = "x" ]]; then LIBS+=("eza") fi
 KEYCASTR=$(echo $BREW_PKGS|grep keycastr)
 if [ "x$KEYCASTR" = "x" ]; then CASKS+=("keycastr") fi
 COCOAPODS=$(echo $BREW_PKGS|grep cocoapods)

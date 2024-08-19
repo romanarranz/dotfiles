@@ -165,8 +165,8 @@ DUF=$(echo $BREW_PKGS|grep duf)
 if [[ "x$DUF" = "x" ]]; then LIBS+=("duf") fi
 BAT=$(echo $BREW_PKGS|grep bat)
 if [[ "x$BAT" = "x" ]]; then LIBS+=("bat") fi
-EXA=$(echo $BREW_PKGS|grep exa)
-if [[ "x$EXA" = "x" ]]; then LIBS+=("exa") fi
+EZA=$(echo $BREW_PKGS|grep eza)
+if [[ "x$EZA" = "x" ]]; then LIBS+=("eza") fi
 # https://github.com/dandavison/delta
 GIT_DELTA=$(echo $BREW_PKGS|grep git-delta)
 if [[ "x$GIT_DELTA" = "x" ]]; then LIBS+=("git-delta") fi

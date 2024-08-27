@@ -120,8 +120,9 @@ EZA=$(echo $BREW_PKGS|grep eza)
 if [[ "x$EZA" = "x" ]]; then LIBS+=("eza") fi
 KEYCASTR=$(echo $BREW_PKGS|grep keycastr)
 if [ "x$KEYCASTR" = "x" ]; then CASKS+=("keycastr") fi
-DBEAVER_CE=$(echo $BREW_PKGS|grep dbeaver-community)
-if [ "x$DBEAVER_CE" = "x" ]; then CASKS+=("dbeaver-community") fi
+# Archived as it does not comes with DDB support at the community version
+# DBEAVER_CE=$(echo $BREW_PKGS|grep dbeaver-community)
+# if [ "x$DBEAVER_CE" = "x" ]; then CASKS+=("dbeaver-community") fi
 COCOAPODS=$(echo $BREW_PKGS|grep cocoapods)
 if [ "x$COCOAPODS" = "x" ]; then LIBS+=("cocoapods") fi
 # https://github.com/ibraheemdev/modern-unix

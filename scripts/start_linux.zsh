@@ -196,6 +196,7 @@ PICK=$(which pick-colour-picker)
 if [[ "$PICK" =~ "not found" ]]; then
   sudo snap install pick-colour-picker
   sudo snap install libreoffice --channel=stable
+  sudo snap install dbeaver-ce
 fi
 
 # DNS

@@ -44,7 +44,7 @@ source $HOME/.zshrc
 #
 # XCode Command Line tools
 XCODE=$(xcode-select -p)
-if [ "$XCODE" != "/Library/Developer/CommandLineTools" ]; then
+if [ "$XCODE" != "/Library/Developer/CommandLineTools" ] && [ "$XCODE" != "/Applications/Xcode.app/Contents/Developer" ]; then
   xcode-select --install
 fi
 
@@ -120,6 +120,8 @@ EZA=$(echo $BREW_PKGS|grep eza)
 if [[ "x$EZA" = "x" ]]; then LIBS+=("eza") fi
 KEYCASTR=$(echo $BREW_PKGS|grep keycastr)
 if [ "x$KEYCASTR" = "x" ]; then CASKS+=("keycastr") fi
+DBEAVER_CE=$(echo $BREW_PKGS|grep dbeaver-community)
+if [ "x$DBEAVER_CE" = "x" ]; then CASKS+=("dbeaver-community") fi
 COCOAPODS=$(echo $BREW_PKGS|grep cocoapods)
 if [ "x$COCOAPODS" = "x" ]; then LIBS+=("cocoapods") fi
 # https://github.com/ibraheemdev/modern-unix

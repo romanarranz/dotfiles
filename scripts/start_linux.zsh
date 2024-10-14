@@ -369,9 +369,15 @@ if [[ "$RUSTUP" =~ "not found" ]]; then
 fi
 
 # rust binaries
+CARGO_LIBS=()
 ZELLIJ=$(which zellij)
-if [ "x$ZELLIJ" = "x" ] || [[ "$ZELLIJ" =~ "not found" ]]; then
-  cargo install --locked zellij
+if [ "x$ZELLIJ" = "x" ] || [[ "$ZELLIJ" =~ "not found" ]]; then CARGO_LIBS+="zellij"; fi
+TRIPPY=$(which trippy)
+# TODO: set permissions https://github.com/fujiapple852/trippy
+if [ "x$TRIPPY" = "x" ] || [[ "$TRIPPY" =~ "not found" ]]; then CARGO_LIBS+="trippy"; fi
+
+if [ ${#CARGO_LIBS[@]} -gt 0 ]; then
+  cargo install --locked $CARGO_LIBS
 fi
 
 # WASM

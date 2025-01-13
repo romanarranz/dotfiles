@@ -173,6 +173,8 @@ MTR=$(echo $BREW_PKGS|grep mtr)
 if [ "x$MTR" = "x" ]; then LIBS+=("mtr") fi
 IPCALC=$(echo $BREW_PKGS|grep ipcalc)
 if [ "x$IPCALC" = "x" ]; then LIBS+=("ipcalc") fi
+WEBSOCAT=$(echo $BREW_PKGS|grep websocat)
+if [ "x$WEBSOCAT" = "x" ]; then LIBS+=("websocat") fi
 GREPCIDR=$(echo $BREW_PKGS|grep grepcidr)
 if [ "x$GREPCIDR" = "x" ]; then LIBS+=("grepcidr") fi
 # https://github.com/theZiz/aha

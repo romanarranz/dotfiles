@@ -26,3 +26,4 @@ alias colorp='pick-colour-picker'
 
 # helpers
 alias uuid='uuidgen'
+alias dug='unfrl-dug'

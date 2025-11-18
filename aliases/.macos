@@ -12,7 +12,7 @@ alias chrome='/Applications/Google\ Chrome\ Dev.app/Contents/MacOS/Google\ Chrom
 alias canary='/Applications/Google\ Chrome\ Canary.app/Contents/MacOS/Google\ Chrome\ Canary'
 
 # VSCode
-alias code="/Applications/Visual\ Studio\ Code.app/Contents/MacOS/Electron"
+alias code="/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code"
 
 # IP addresses
 alias ip='dig +short myip.opendns.com @resolver1.opendns.com'
